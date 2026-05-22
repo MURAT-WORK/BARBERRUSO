@@ -46,13 +46,13 @@ body::before {
   opacity: 0.25;
 }
 
-/* Global Fixed Background Layer (8px blur, completely stable on mobile) */
+/* Global Fixed Background Layer */
 .global-bg {
   position: fixed;
   top: -40px; 
   left: 0;
   width: 100%;
-  height: 100vh; /* Базовый фолбек */
+  height: 100vh;
   z-index: -2;
   background-image: 
     linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.85) 100%),
@@ -60,12 +60,12 @@ body::before {
     url('img/background.jpg');
   background-size: cover;
   background-position: center top;
-  filter: blur(8px); /* Наш размытый фон */
-  transform: scale(1.06); /* Компенсация размытия по краям */
+  filter: blur(8px); 
+  transform: scale(1.06); 
   pointer-events: none;
 }
 
-/* NAV - Always fixed rounded pill at a lower position */
+/* NAV */
 .nav {
   position: fixed;
   top: 24px;
@@ -149,7 +149,6 @@ body::before {
 .hero-title span { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.25); }
 .hero-sub { font-size: clamp(13px, 3vw, 16px); font-weight: 400; color: var(--acc1); opacity: 0.8; letter-spacing: 1px; margin-bottom: 16px; opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.6s; }
 
-/* Empty space ("air") instead of description text */
 .hero-desc-spacer {
   height: 56px;
   opacity: 0;
@@ -236,7 +235,6 @@ section { padding: 80px 24px; position: relative; }
   background: transparent;
 }
 
-/* Static PNG styling with no hover zoom */
 .master-png-img {
   position: absolute;
   bottom: 0;
@@ -249,8 +247,6 @@ section { padding: 80px 24px; position: relative; }
   z-index: 3;
   pointer-events: none;
 }
-
-/* Vyacheslav's photo is set to exactly 100% height to prevent any layout clipping */
 .viach .master-png-img {
   height: 100%;
 }
@@ -315,12 +311,11 @@ section { padding: 80px 24px; position: relative; }
 .price-card:hover { border-color: rgba(255,255,255,0.15); transform: translateX(4px); }
 .price-card.popular { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.12); }
 
-/* Standard Price-info Row styling */
 .price-name-row {
   display: flex;
   align-items: center;
   gap: 8px;
-  flex-wrap: wrap; /* Perfect responsive wrapping on small devices */
+  flex-wrap: wrap; 
 }
 .popular-badge { 
   display: inline-flex; 
@@ -355,14 +350,12 @@ section { padding: 80px 24px; position: relative; }
   white-space: nowrap;
 }
 
-/* Only show booking button on PC hover states, keeping mobile layout clean */
 @media (hover: hover) {
   .price-card:hover .price-book-btn, .price-card.active .price-book-btn { 
     display: block; 
     animation: fadeUp 0.25s ease; 
   }
 }
-
 .price-book-btn:hover { background: #E5E5E5; box-shadow: 0 6px 20px rgba(255,255,255,0.15); }
 
 /* ===== MODAL ===== */
@@ -400,7 +393,6 @@ section { padding: 80px 24px; position: relative; }
 .modal-close:hover { background: rgba(255,255,255,0.08); color: var(--acc1); }
 .modal-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--acc2); margin-bottom: 8px; }
 .modal-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 2px; margin-bottom: 6px; }
-.modal-success-title { font-family: 'Montserrat Alternates', sans-serif; font-size: 24px; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; }
 .modal-service { font-size: 13px; color: var(--acc2); margin-bottom: 28px; }
 .modal-service span { color: var(--acc1); font-weight: 600; }
 .modal-fields { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
@@ -473,7 +465,7 @@ section { padding: 80px 24px; position: relative; }
 .dot.active { background: var(--acc1); width: 20px; border-radius: 3px; }
 
 /* ===== FOOTER ===== */
-footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padding: 48px 24px 32px; text-align: center; }
+footer { background: transparent; border-top: 1px solid var(--glass-border); padding: 48px 24px 32px; text-align: center; }
 .footer-brand { display: flex; flex-direction: column; align-items: center; gap: 20px; margin-bottom: 32px; }
 .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 3px; }
 .footer-logo span { color: var(--acc1); opacity: 0.5; }
@@ -500,25 +492,19 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
   section { padding: 140px 120px; }
 }
 
-/* Animations - RESTORED KEYFRAMES */
+/* Animations */
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 </style>
 </head>
 <body>
 
-<!-- Global Fixed Background Layer (8px blur, completely stable on mobile) -->
+<!-- Global Fixed Background Layer -->
 <div class="global-bg"></div>
 
-<!-- NAVBAR (Permanently fixed in space) -->
+<!-- NAVBAR -->
 <nav class="nav" id="navbar">
   <a href="#" class="nav-logo">BARBER<span>RUSO</span></a>
 </nav>
@@ -534,7 +520,6 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
     <h1 class="hero-title">BARBER<br><span>RUSO</span></h1>
     <p class="hero-sub">Безупречная эстетика мужского стиля в Сатке</p>
     
-    <!-- Vertical spacer ("air") in place of the removed description -->
     <div class="hero-desc-spacer"></div>
 
     <div class="hero-btns">
@@ -635,7 +620,7 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
         <button class="price-book-btn" onclick="event.stopPropagation(); openModal('Оформление бороды','1000 ₽')">Записаться</button>
       </div>
     </div>
-    <div class="price-card reveal reveal-delay-4" onclick="openModal('Fade / Машинка','1000 ₽')">
+    <div class="price-card reveal reveal-delay-4" onclick="openModal('Fade / Стрижка машинкой','1000 ₽')">
       <div class="price-info">
         <div class="price-name">Стрижка машинкой</div>
         <div class="price-duration">≈ 40 минут</div>
@@ -729,22 +714,19 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
       <div class="modal-title">BARBERRUSO</div>
       <div class="modal-service">Услуга: <span id="modalServiceName"></span></div>
       <div class="modal-fields">
-        <input class="modal-input" type="text" id="bookName" placeholder="Ваше имя" autocomplete="name">
+        <!-- Разделенные поля для Имени и Фамилии -->
+        <input class="modal-input" type="text" id="bookFirstName" placeholder="Имя" autocomplete="given-name">
+        <input class="modal-input" type="text" id="bookLastName" placeholder="Фамилия" autocomplete="family-name">
         <input class="modal-input" type="tel" id="bookPhone" placeholder="Номер телефона" autocomplete="tel">
       </div>
-      <button class="modal-submit" onclick="submitBooking()">Забронировать время</button>
-      <p class="modal-note">После интеграции с DIKIDI запись пройдет автоматически. В данный момент мы свяжемся с вами лично.</p>
-    </div>
-    <div class="modal-success" id="modalSuccess">
-      <div class="check">✓</div>
-      <div class="modal-success-title">Принято</div>
-      <p>Заявка успешно оформлена. Мы свяжемся с вами в ближайшее время для подтверждения деталей визита.</p>
+      <button class="modal-submit" onclick="submitBooking()">Записаться</button>
+      <p class="modal-note">В данный момент запись производится напрямую через нашего мастера в Telegram.</p>
     </div>
   </div>
 </div>
 
 <script>
-// REVEAL
+// REVEAL ANIMATIONS
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
@@ -802,55 +784,80 @@ track.addEventListener('touchend', e => {
   if (Math.abs(diff) > 50) goTo(current + (diff > 0 ? 1 : -1));
 });
 
-// MODAL
+// MODAL & TELEGRAM REDIRECT
 let selectedService = '';
 function openModal(name, price) {
   selectedService = name;
   document.getElementById('modalServiceName').textContent = name + ' — ' + price;
   document.getElementById('modalForm').style.display = 'block';
-  document.getElementById('modalSuccess').style.display = 'none';
-  document.getElementById('bookName').value = '';
+  document.getElementById('bookFirstName').value = '';
+  document.getElementById('bookLastName').value = '';
   document.getElementById('bookPhone').value = '';
+  
+  // Убираем красные рамки ошибок при новом открытии
+  document.getElementById('bookFirstName').style.borderColor = '';
+  document.getElementById('bookLastName').style.borderColor = '';
+  document.getElementById('bookPhone').style.borderColor = '';
+  
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
+
 function closeModal() {
   document.getElementById('modalOverlay').classList.remove('open');
   document.body.style.overflow = '';
 }
-function closeModalOutside(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-function submitBooking() {
-  const name = document.getElementById('bookName').value.trim();
-  const phone = document.getElementById('bookPhone').value.trim();
-  if (!name || !phone) {
-    document.getElementById('bookName').style.borderColor = !name ? 'rgba(255,255,255,0.3)' : '';
-    document.getElementById('bookPhone').style.borderColor = !phone ? 'rgba(255,255,255,0.3)' : '';
-    return;
-  }
-  document.getElementById('modalForm').style.display = 'none';
-  document.getElementById('modalSuccess').style.display = 'flex';
+function closeModalOutside(e) { 
+  if (e.target === document.getElementById('modalOverlay')) closeModal(); 
 }
 
-// PARALLAX
-let ticking = false;
-window.addEventListener('scroll', () => {
-  if (!ticking) {
-    requestAnimationFrame(() => {
-      const heroBg = document.querySelector('.hero-bg');
-      if (heroBg) heroBg.style.transform = `translateY(${window.scrollY * 0.28}px)`;
-      ticking = false;
-    });
-    ticking = true;
-  }
+document.addEventListener('keydown', e => { 
+  if (e.key === 'Escape') closeModal(); 
 });
 
-// Fixed Background Height Lock for Mobile Browsers (strictly locked to physical screen size to prevent any dynamic shifts)
+function submitBooking() {
+  const firstName = document.getElementById('bookFirstName').value.trim();
+  const lastName = document.getElementById('bookLastName').value.trim();
+  const phone = document.getElementById('bookPhone').value.trim();
+  
+  let hasError = false;
+  
+  if (!firstName) { document.getElementById('bookFirstName').style.borderColor = 'rgba(255,255,255,0.4)'; hasError = true; }
+  else { document.getElementById('bookFirstName').style.borderColor = ''; }
+  
+  if (!lastName) { document.getElementById('bookLastName').style.borderColor = 'rgba(255,255,255,0.4)'; hasError = true; }
+  else { document.getElementById('bookLastName').style.borderColor = ''; }
+  
+  if (!phone) { document.getElementById('bookPhone').style.borderColor = 'rgba(255,255,255,0.4)'; hasError = true; }
+  else { document.getElementById('bookPhone').style.borderColor = ''; }
+  
+  if (hasError) return;
+  
+  // Формируем текст сообщения для Telegram
+  const message = `Здравствуйте! Хочу записаться на услугу.\n\n` +
+                  `Услуга: ${selectedService}\n` +
+                  `Имя: ${firstName}\n` +
+                  `Фамилия: ${lastName}\n` +
+                  `Телефон: ${phone}`;
+                  
+  // Кодируем текст для безопасной передачи в URL
+  const encodedMessage = encodeURIComponent(message);
+  
+  // URL для открытия чата Telegram (переход в аккаунт BarberRuso с текстом)
+  const telegramUrl = `https://t.me/BarberRuso?text=${encodedMessage}`;
+  
+  // Открываем новую вкладку
+  window.open(telegramUrl, '_blank');
+  
+  // Закрываем окно на сайте
+  closeModal();
+}
+
+// Fixed Background Height Lock for Mobile Browsers
 const lockBgHeight = () => {
   const bg = document.querySelector('.global-bg');
   if (bg) {
-    // Math.max guarantees the height handles any browser toolbar offsets without resizing during scroll
     const targetHeight = Math.max(window.screen.height, window.innerHeight) + 120;
     bg.style.height = targetHeight + 'px';
   }
