@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="BARBERRUSO — премиальные мужские стрижки в Сатке. Современный подход, стиль и атмосфера.">
+<title>BARBERRUSO — Премиальный барбершоп в Сатке</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat+Alternates:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg0: #000000;
+  --bg1: #050505;
+  --bg2: #0C0C0C;
+  --acc1: #FFFFFF;
+  --acc2: #A6A6A6;
+  --accent: #FFFFFF;
+  --glass-bg: rgba(255,255,255,0.02);
+  --glass-border: rgba(255,255,255,0.07);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg0);
+  color: var(--acc1);
+  font-family: 'Montserrat Alternates', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-align: center;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.25;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 28px 24px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  background: transparent;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-logo {
+  position: absolute;
+  left: 24px;
+  transform: translateX(0);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  letter-spacing: 3px;
+  color: var(--acc1);
+  text-decoration: none;
+  font-weight: 400;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-logo span { 
+  color: var(--acc1); 
+  font-weight: 300;
+  opacity: 0.5;
+}
+
+/* Scrolled state */
+.nav.scrolled {
+  top: 16px;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 320px;
+  height: 54px;
+  background: rgba(12, 12, 12, 0.75);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 100px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+  padding: 0;
+}
+.nav.scrolled .nav-logo {
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 22px;
+  letter-spacing: 4px;
+}
+
+@media (min-width: 768px) {
+  .nav { padding: 28px 40px; }
+  .nav-logo { left: 40px; }
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 120px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(255,255,255,0.03) 0%, transparent 60%),
+    linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 100%);
+  z-index: 0;
+}
+.glow-orb { position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none; animation: floatOrb 10s ease-in-out infinite; }
+.orb1 { width: 350px; height: 350px; background: rgba(255,255,255,0.015); top: -100px; right: -50px; }
+.orb2 { width: 250px; height: 250px; background: rgba(255,255,255,0.01); bottom: 100px; left: -50px; animation-delay: 3s; }
+.orb3 { width: 180px; height: 180px; background: rgba(255,255,255,0.012); top: 35%; right: 5%; animation-delay: 5s; }
+@keyframes floatOrb { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-20px) scale(1.05); } }
+.grid-lines {
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(rgba(255,255,255,0.008) 0, rgba(255,255,255,0.008) 1px, transparent 1px, transparent 80px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.008) 0, rgba(255,255,255,0.008) 1px, transparent 1px, transparent 80px);
+  pointer-events: none; z-index: 0;
+}
+.hero-content { position: relative; z-index: 1; max-width: 680px; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px;
+  background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 100px;
+  font-size: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--acc1);
+  margin-bottom: 24px;
+  opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
+}
+.hero-eyebrow::before { content: ''; width: 5px; height: 5px; background: var(--acc1); border-radius: 50%; animation: pulseDot 2s ease infinite; }
+@keyframes pulseDot { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(72px, 18vw, 112px);
+  line-height: 0.9; letter-spacing: 4px;
+  color: var(--acc1);
+  opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.4s;
+  margin-bottom: 8px;
+}
+.hero-title span { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.25); }
+.hero-sub { font-size: clamp(13px, 3vw, 16px); font-weight: 400; color: var(--acc1); opacity: 0.8; letter-spacing: 1px; margin-bottom: 16px; opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.6s; }
+.hero-desc { font-size: 14px; line-height: 1.8; color: var(--acc2); margin: 0 auto 36px; max-width: 480px; opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.8s; }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 48px; opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 1s; }
+
+.btn-primary {
+  padding: 14px 28px; background: var(--acc1); color: var(--bg0);
+  border: 1px solid var(--acc1); border-radius: 8px;
+  font-family: 'Montserrat Alternates', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.5px;
+  cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-primary:hover { transform: translateY(-2px); background: transparent; color: var(--acc1); box-shadow: 0 12px 30px rgba(255,255,255,0.1); }
+
+.btn-secondary {
+  padding: 14px 28px; background: transparent; color: var(--acc1);
+  border: 1px solid rgba(255,255,255,0.15); border-radius: 8px;
+  font-family: 'Montserrat Alternates', sans-serif; font-size: 12px; font-weight: 500;
+  cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-secondary:hover { border-color: var(--acc1); background: rgba(255,255,255,0.03); transform: translateY(-2px); }
+
+.hero-perks { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 1.2s; }
+.perk { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 500; color: var(--acc2); letter-spacing: 0.5px; }
+.perk-check { width: 18px; height: 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 8px; color: var(--acc1); }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+/* SECTIONS */
+section { padding: 80px 24px; position: relative; }
+.section-header { text-align: center; }
+.section-label {
+  font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--acc1);
+  margin-bottom: 12px;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  opacity: 0.5;
+}
+.section-label::before, .section-label::after { content: ''; width: 24px; height: 1px; background: var(--acc2); opacity: 0.3; }
+.section-title { font-family: 'Montserrat Alternates', sans-serif; font-size: clamp(32px, 8vw, 48px); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; line-height: 1.1; margin-bottom: 14px; }
+.section-sub { font-size: 14px; color: var(--acc2); max-width: 480px; line-height: 1.8; margin: 0 auto 48px; }
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+.divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--glass-border), transparent); }
+
+/* ===== MASTERS ===== */
+.masters-bg { background: linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 50%, var(--bg0) 100%); }
+.masters-list { display: flex; flex-direction: column; gap: 28px; max-width: 960px; margin: 0 auto; }
+
+.master-card-h {
+  display: flex;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  overflow: visible; 
+  min-height: 340px;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.master-card-h:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.15);
+}
+.master-card-h.ruslan .master-h-content { order: 1; }
+.master-card-h.ruslan .master-h-photo  { order: 2; }
+.master-card-h.viach .master-h-photo   { order: 1; }
+.master-card-h.viach .master-h-content { order: 2; }
+
+.master-h-content {
+  flex: 1;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+.master-h-photo {
+  width: 45%;
+  flex-shrink: 0;
+  position: relative;
+  overflow: visible; 
+  background: transparent;
+}
+
+.master-png-img {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scale(1.1);
+  transform-origin: bottom center;
+  height: 112%;
+  width: auto;
+  max-width: none; /* Защита от сжатия */
+  z-index: 3;
+  pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.master-card-h:hover .master-png-img {
+  transform: translateX(-50%) scale(1.18);
+}
+
+.master-photo-grid { 
+  position: absolute; inset: 0; 
+  background-image: repeating-linear-gradient(rgba(255,255,255,0.01) 0, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 36px), repeating-linear-gradient(90deg, rgba(255,255,255,0.01) 0, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 36px); 
+  z-index: 1;
+  background-color: rgba(20,20,20,0.4);
+}
+.master-card-h.ruslan .master-photo-grid { border-radius: 0 20px 20px 0; }
+.master-card-h.viach .master-photo-grid { border-radius: 20px 0 0 20px; }
+
+.master-h-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.6) 0%, transparent 50%); z-index: 2; pointer-events: none; }
+.master-card-h.viach .master-h-photo::after { background: linear-gradient(to left, rgba(0,0,0,0.6) 0%, transparent 50%); }
+
+.master-role { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--acc2); margin-bottom: 8px; opacity: 0.8; }
+.master-name { font-family: 'Montserrat Alternates', sans-serif; font-size: 32px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; line-height: 1; }
+.master-desc { font-size: 13px; line-height: 1.8; color: var(--acc2); margin-bottom: 22px; }
+.master-socials { display: flex; gap: 8px; }
+.social-btn {
+  width: 38px; height: 38px;
+  background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--acc2); text-decoration: none;
+  transition: all 0.3s ease;
+}
+.social-btn:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.2); color: var(--acc1); }
+.social-btn svg { width: 17px; height: 17px; fill: currentColor; }
+
+@media (max-width: 640px) {
+  .master-card-h { flex-direction: column; min-height: auto; overflow: visible; }
+  .master-card-h.ruslan .master-h-content { order: 2; }
+  .master-card-h.ruslan .master-h-photo  { order: 1; }
+  .master-card-h.viach .master-h-photo   { order: 1; }
+  .master-card-h.viach .master-h-content { order: 2; }
+  .master-h-photo { width: 100%; height: 260px; overflow: visible; }
+  .master-png-img { height: 110%; }
+  .master-photo-grid { border-radius: 20px 20px 0 0 !important; }
+  .master-h-content { padding: 28px 24px; text-align: center; }
+  .master-socials { justify-content: center; }
+  .master-h-photo::after { background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%) !important; }
+}
+
+/* ===== PRICES ===== */
+.prices-bg { background: var(--bg0); }
+.prices-grid { display: grid; grid-template-columns: 1fr; gap: 10px; max-width: 700px; margin: 0 auto; }
+.price-card {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 22px;
+  background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 14px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden;
+  cursor: pointer;
+  text-align: left;
+}
+.price-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: transparent; transition: background 0.3s; border-radius: 3px 0 0 3px; }
+.price-card:hover::before, .price-card.popular::before { background: var(--acc1); }
+.price-card:hover { border-color: rgba(255,255,255,0.15); transform: translateX(4px); }
+.price-card.popular { background: rgba(255,255,255,0.02); border-color: rgba(255,255,255,0.12); }
+.popular-badge { position: absolute; top: 10px; right: 12px; padding: 2px 10px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 100px; font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--acc1); }
+.price-info { display: flex; flex-direction: column; gap: 3px; }
+.price-name { font-size: 15px; font-weight: 500; color: var(--acc1); }
+.price-duration { font-size: 11px; color: var(--acc2); opacity: 0.6; }
+.price-right { display: flex; align-items: center; gap: 12px; }
+.price-amount { font-family: 'Montserrat Alternates', sans-serif; font-size: 22px; font-weight: 700; color: var(--acc1); }
+
+.price-book-btn {
+  display: none;
+  padding: 7px 16px;
+  background: var(--acc1);
+  color: var(--bg0);
+  border: none; border-radius: 7px;
+  font-family: 'Montserrat Alternates', sans-serif; font-size: 12px; font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+.price-card:hover .price-book-btn, .price-card.active .price-book-btn { display: block; animation: fadeUp 0.25s ease; }
+.price-book-btn:hover { background: #E5E5E5; box-shadow: 0 6px 20px rgba(255,255,255,0.15); }
+
+/* ===== MODAL ===== */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 2000;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal {
+  background: var(--bg1);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 36px 32px;
+  width: 100%; max-width: 440px;
+  position: relative;
+  transform: translateY(20px) scale(0.97);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: center;
+}
+.modal-overlay.open .modal { transform: translateY(0) scale(1); }
+.modal-close {
+  position: absolute; top: 16px; right: 16px;
+  width: 32px; height: 32px;
+  background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 8px;
+  color: var(--acc2); font-size: 14px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.modal-close:hover { background: rgba(255,255,255,0.08); color: var(--acc1); }
+.modal-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--acc2); margin-bottom: 8px; }
+.modal-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 2px; margin-bottom: 6px; }
+.modal-success-title { font-family: 'Montserrat Alternates', sans-serif; font-size: 24px; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; }
+.modal-service { font-size: 13px; color: var(--acc2); margin-bottom: 28px; }
+.modal-service span { color: var(--acc1); font-weight: 600; }
+.modal-fields { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+.modal-input {
+  width: 100%; padding: 13px 16px;
+  background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 10px;
+  color: var(--acc1); font-family: 'Montserrat Alternates', sans-serif; font-size: 14px;
+  outline: none; transition: border-color 0.3s;
+  text-align: left;
+}
+.modal-input::placeholder { color: rgba(255,255,255,0.25); }
+.modal-input:focus { border-color: rgba(255,255,255,0.25); }
+.modal-submit {
+  width: 100%; padding: 15px;
+  background: var(--acc1); color: var(--bg0);
+  border: none; border-radius: 10px;
+  font-family: 'Montserrat Alternates', sans-serif; font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.modal-submit:hover { background: #E5E5E5; box-shadow: 0 8px 28px rgba(255,255,255,0.15); }
+.modal-note { font-size: 11px; color: var(--acc2); opacity: 0.5; margin-top: 12px; }
+.modal-success { display: none; flex-direction: column; align-items: center; gap: 12px; padding: 20px 0; }
+.modal-success .check { width: 60px; height: 60px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--acc1); }
+.modal-success p { font-size: 14px; color: var(--acc2); line-height: 1.6; }
+
+/* ===== GALLERY ===== */
+.gallery-bg { background: linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 100%); }
+.gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; max-width: 1100px; margin: 0 auto; }
+.gallery-item { aspect-ratio: 4/5; background: var(--bg2); border-radius: 12px; overflow: hidden; position: relative; cursor: pointer; }
+.gallery-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.01) 0%, var(--bg2) 50%, rgba(255,255,255,0.01) 100%); position: relative; }
+.gallery-placeholder::after { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(rgba(255,255,255,0.008) 0, rgba(255,255,255,0.008) 1px, transparent 1px, transparent 30px), repeating-linear-gradient(90deg, rgba(255,255,255,0.008) 0, rgba(255,255,255,0.008) 1px, transparent 1px, transparent 30px); }
+.gallery-placeholder-icon { font-family: 'Montserrat Alternates', sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 2px; color: rgba(255,255,255,0.05); z-index: 1; }
+.gallery-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.75); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; backdrop-filter: blur(4px); }
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-overlay-icon { width: 48px; height: 48px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; transform: scale(0.8); transition: transform 0.3s ease; }
+.gallery-item:hover .gallery-overlay-icon { transform: scale(1); }
+.gallery-item:hover { transform: scale(1.01); transition: transform 0.3s ease; }
+
+/* ===== REVIEWS CAROUSEL ===== */
+.reviews-bg { background: var(--bg0); }
+.carousel-wrap { position: relative; max-width: 860px; margin: 0 auto; overflow: hidden; }
+.carousel-track { display: flex; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.review-card {
+  min-width: 100%;
+  padding: 32px 28px;
+  background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px;
+}
+.review-stars { display: flex; gap: 4px; justify-content: center; margin-bottom: 16px; }
+.star { color: var(--acc1); font-size: 14px; opacity: 0.9; }
+.review-title { font-family: 'Montserrat Alternates', sans-serif; font-size: 18px; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 12px; color: var(--acc1); }
+.review-text { font-size: 14px; line-height: 1.8; color: var(--acc2); margin-bottom: 24px; font-style: italic; }
+.review-author { display: flex; align-items: center; gap: 12px; justify-content: center; }
+.review-avatar { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: var(--acc1); flex-shrink: 0; }
+.review-author-info strong { display: block; font-size: 14px; font-weight: 600; color: var(--acc1); text-align: left; }
+.review-author-info span { font-size: 12px; color: var(--acc2); opacity: 0.5; }
+.carousel-nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 24px; }
+.carousel-btn {
+  width: 40px; height: 40px;
+  background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 50%;
+  color: var(--acc2); font-size: 16px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.carousel-btn:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.2); color: var(--acc1); }
+.carousel-dots { display: flex; gap: 6px; }
+.dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.15); transition: all 0.3s; cursor: pointer; }
+.dot.active { background: var(--acc1); width: 20px; border-radius: 3px; }
+
+/* ===== FOOTER ===== */
+footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padding: 48px 24px 32px; text-align: center; }
+.footer-brand { display: flex; flex-direction: column; align-items: center; gap: 20px; margin-bottom: 32px; }
+.footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 3px; }
+.footer-logo span { color: var(--acc1); opacity: 0.5; }
+.footer-socials { display: flex; gap: 10px; justify-content: center; }
+.footer-social { width: 42px; height: 42px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--acc2); font-size: 16px; text-decoration: none; transition: all 0.2s; }
+.footer-social:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.25); color: var(--acc1); transform: translateY(-2px); }
+.footer-social svg { width: 18px; height: 18px; fill: currentColor; }
+.footer-bottom { padding-top: 24px; border-top: 1px solid var(--glass-border); display: flex; flex-direction: column; gap: 6px; align-items: center; }
+.footer-bottom p { font-size: 12px; color: var(--acc2); opacity: 0.4; }
+.footer-phone-link { color: inherit; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; margin: 4px 0; display: inline-block; }
+.footer-phone-link:hover { color: var(--acc1); }
+
+/* RESPONSIVE */
+@media (min-width: 768px) {
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+  section { padding: 100px 40px; }
+  .carousel-wrap { max-width: 720px; }
+}
+@media (min-width: 1024px) {
+  .gallery-grid { grid-template-columns: repeat(4, 1fr); }
+  section { padding: 120px 60px; }
+}
+@media (min-width: 1440px) {
+  section { padding: 140px 120px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="nav" id="navbar">
+  <a href="#" class="nav-logo">BARBER<span>RUSO</span></a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="glow-orb orb1"></div>
+  <div class="glow-orb orb2"></div>
+  <div class="glow-orb orb3"></div>
+  <div class="grid-lines"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">ПРЕМИАЛЬНОЕ МУЖСКОЕ ПРОСТРАНСТВО</div>
+    <h1 class="hero-title">BARBER<br><span>RUSO</span></h1>
+    <p class="hero-sub">Безупречная эстетика мужского стиля в Сатке</p>
+    <p class="hero-desc">Строгая классика и современный подход. Место, где форма встречается с содержанием, а каждая деталь подчинена вашему стилю.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="document.getElementById('prices').scrollIntoView({behavior:'smooth'})">Меню услуг</button>
+      <button class="btn-secondary" onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})">Портфолио</button>
+    </div>
+    <div class="hero-perks">
+      <div class="perk"><div class="perk-check">✓</div>Мастерство</div>
+      <div class="perk"><div class="perk-check">✓</div>Точность</div>
+      <div class="perk"><div class="perk-check">✓</div>Сервис</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- MASTERS -->
+<section class="masters-bg" id="masters">
+  <div class="section-header reveal">
+    <div class="section-label">Команда резидентов</div>
+    <h2 class="section-title">Наши мастера</h2>
+    <p class="section-sub">Люди, формирующие эстетику. Бескомпромиссный подход к технике и глубокое понимание мужской физиогномики.</p>
+  </div>
+  <div class="masters-list">
+
+    <!-- Руслан -->
+    <div class="master-card-h ruslan reveal reveal-delay-1">
+      <div class="master-h-content">
+        <div class="master-role">Основатель · Арт-директор</div>
+        <div class="master-name">Руслан</div>
+        <p class="master-desc">Идеолог и основатель пространства. Архитектор форм, специализирующийся на сложных техниках фейда и архитектуре бороды. Создает не просто стрижку, а завершенный, уверенный образ.</p>
+        <div class="master-socials">
+          <a class="social-btn" href="https://t.me/BarberRuso" target="_blank" title="Telegram">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 1 0 24 12 12 12 0 0 0 11.944 0zm6.063 8.234-2.01 9.47c-.148.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.873.75z"/></svg>
+          </a>
+          <a class="social-btn" href="https://www.instagram.com/barber_ruso/" target="_blank" title="Instagram">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07;"></path></svg>
+          </a>
+        </div>
+      </div>
+      <div class="master-h-photo">
+        <div class="master-photo-grid"></div>
+        <img src="img/master-ruslan.png" class="master-png-img" alt="Руслан">
+      </div>
+    </div>
+
+    <!-- Вячеслав -->
+    <div class="master-card-h viach reveal reveal-delay-2">
+      <div class="master-h-photo">
+        <div class="master-photo-grid"></div>
+        <img src="img/master-viach.png" class="master-png-img" alt="Вячеслав">
+      </div>
+      <div class="master-h-content">
+        <div class="master-role">Барбер · Стилист</div>
+        <div class="master-name">Вячеслав</div>
+        <p class="master-desc">Мастер точных геометрических линий и чистых переходов. Перфекционист в деталях, доводящий каждую работу до абсолюта. Строгость, динамика и выверенная техника.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRICES -->
+<section class="prices-bg" id="prices">
+  <div class="section-header reveal">
+    <div class="section-label">Инвестиции в себя</div>
+    <h2 class="section-title">Услуги</h2>
+    <p class="section-sub">Лаконичный прайс без лишних деталей. Выбирайте необходимое и бронируйте время своего визита.</p>
+  </div>
+  <div class="prices-grid">
+    <div class="price-card popular reveal reveal-delay-1" onclick="openModal('Стрижка + борода','2000 ₽')">
+      <div class="popular-badge">Популярное</div>
+      <div class="price-info">
+        <div class="price-name">Стрижка + борода</div>
+        <div class="price-duration">≈ 60–75 минут</div>
+      </div>
+      <div class="price-right">
+        <div class="price-amount">2000 ₽</div>
+        <button class="price-book-btn" onclick="event.stopPropagation(); openModal('Стрижка + борода','2000 ₽')">Записаться</button>
+      </div>
+    </div>
+    <div class="price-card reveal reveal-delay-2" onclick="openModal('Мужская стрижка','1300 ₽')">
+      <div class="price-info">
+        <div class="price-name">Мужская стрижка</div>
+        <div class="price-duration">≈ 45 минут</div>
+      </div>
+      <div class="price-right">
+        <div class="price-amount">1300 ₽</div>
+        <button class="price-book-btn" onclick="event.stopPropagation(); openModal('Мужская стрижка','1300 ₽')">Записаться</button>
+      </div>
+    </div>
+    <div class="price-card reveal reveal-delay-3" onclick="openModal('Оформление бороды','1000 ₽')">
+      <div class="price-info">
+        <div class="price-name">Оформление бороды</div>
+        <div class="price-duration">≈ 30 минут</div>
+      </div>
+      <div class="price-right">
+        <div class="price-amount">1000 ₽</div>
+        <button class="price-book-btn" onclick="event.stopPropagation(); openModal('Оформление бороды','1000 ₽')">Записаться</button>
+      </div>
+    </div>
+    <div class="price-card reveal reveal-delay-4" onclick="openModal('Fade / Машинка','1000 ₽')">
+      <div class="price-info">
+        <div class="price-name">Fade / Стрижка машинкой</div>
+        <div class="price-duration">≈ 40 минут</div>
+      </div>
+      <div class="price-right">
+        <div class="price-amount">1000 ₽</div>
+        <button class="price-book-btn" onclick="event.stopPropagation(); openModal('Fade / Машинка','1000 ₽')">Записаться</button>
+      </div>
+    </div>
+    <div class="price-card reveal reveal-delay-5" onclick="openModal('Детская стрижка','1000 ₽')">
+      <div class="price-info">
+        <div class="price-name">Детская стрижка</div>
+        <div class="price-duration">≈ 30 минут</div>
+      </div>
+      <div class="price-right">
+        <div class="price-amount">1000 ₽</div>
+        <button class="price-book-btn" onclick="event.stopPropagation(); openModal('Детская стрижка','1000 ₽')">Записаться</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- GALLERY -->
+<section class="gallery-bg" id="gallery">
+  <div class="section-header reveal">
+    <div class="section-label">Философия формы</div>
+    <h2 class="section-title">Портфолио</h2>
+    <p class="section-sub">Визуальный манифест нашей работы. Точность линий, текстура и идеальный баланс в каждом образе.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item reveal reveal-delay-1"><div class="gallery-placeholder"><div class="gallery-placeholder-icon">FADE</div></div><div class="gallery-overlay"><div class="gallery-overlay-icon">⊕</div></div></div>
+    <div class="gallery-item reveal reveal-delay-2"><div class="gallery-placeholder" style="background:linear-gradient(160deg,rgba(255,255,255,0.01) 0%,var(--bg2) 100%)"><div class="gallery-placeholder-icon">BEARD</div></div><div class="gallery-overlay"><div class="gallery-overlay-icon">⊕</div></div></div>
+    <div class="gallery-item reveal reveal-delay-3"><div class="gallery-placeholder" style="background:linear-gradient(200deg,rgba(255,255,255,0.01) 0%,var(--bg2) 100%)"><div class="gallery-placeholder-icon">SKIN</div></div><div class="gallery-overlay"><div class="gallery-overlay-icon">⊕</div></div></div>
+    <div class="gallery-item reveal reveal-delay-4"><div class="gallery-placeholder"><div class="gallery-placeholder-icon">STYLE</div></div><div class="gallery-overlay"><div class="gallery-overlay-icon">⊕</div></div></div>
+    <div class="gallery-item reveal reveal-delay-1"><div class="gallery-placeholder" style="background:linear-gradient(140deg,rgba(255,255,255,0.01) 0%,var(--bg2) 100%)"><div class="gallery-placeholder-icon">BUZZ</div></div><div class="gallery-overlay"><div class="gallery-overlay-icon">⊕</div></div></div>
+    <div class="gallery-item reveal reveal-delay-2"><div class="gallery-placeholder"><div class="gallery-placeholder-icon">TRIM</div></div><div class="gallery-overlay"><div class="gallery-overlay-icon">⊕</div></div></div>
+    <div class="gallery-item reveal reveal-delay-3"><div class="gallery-placeholder" style="background:linear-gradient(170deg,rgba(255,255,255,0.01) 0%,var(--bg2) 100%)"><div class="gallery-placeholder-icon">CREW</div></div><div class="gallery-overlay"><div class="gallery-overlay-icon">⊕</div></div></div>
+    <div class="gallery-item reveal reveal-delay-4"><div class="gallery-placeholder"><div class="gallery-placeholder-icon">CLAS</div></div><div class="gallery-overlay"><div class="gallery-overlay-icon">⊕</div></div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- REVIEWS -->
+<section class="reviews-bg" id="reviews">
+  <div class="section-header reveal">
+    <div class="section-label">Репутация</div>
+    <h2 class="section-title">Отзывы гостей</h2>
+    <p class="section-sub">Слова тех, кто разделяет наши ценности и доверяет нам свой стиль.</p>
+  </div>
+  <div class="carousel-wrap reveal">
+    <div class="carousel-track" id="carouselTrack"></div>
+    <div class="carousel-nav">
+      <button class="carousel-btn" id="prevBtn">&#8592;</button>
+      <div class="carousel-dots" id="carouselDots"></div>
+      <button class="carousel-btn" id="nextBtn">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="footer-brand reveal">
+    <div class="footer-logo">BARBER<span>RUSO</span></div>
+    <div class="footer-socials">
+      <a class="footer-social" href="https://t.me/BarberRuso" target="_blank" title="Telegram">
+        <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 1 0 24 12 12 12 0 0 0 11.944 0zm6.063 8.234-2.01 9.47c-.148.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.873.75z"/></svg>
+      </a>
+      <a class="footer-social" href="https://www.instagram.com/barber_ruso/" target="_blank" title="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07;"></path></svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>г. Сатка, ул. Солнечная 11</p>
+    <p><a href="tel:+79822826697" class="footer-phone-link">+7 982 282 6697</a></p>
+    <p>© 2024 BARBERRUSO. Все права защищены.</p>
+  </div>
+</footer>
+
+<!-- BOOKING MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modalForm">
+      <div class="modal-label">Запись онлайн</div>
+      <div class="modal-title">BARBERRUSO</div>
+      <div class="modal-service">Услуга: <span id="modalServiceName"></span></div>
+      <div class="modal-fields">
+        <input class="modal-input" type="text" id="bookName" placeholder="Ваше имя" autocomplete="name">
+        <input class="modal-input" type="tel" id="bookPhone" placeholder="Номер телефона" autocomplete="tel">
+      </div>
+      <button class="modal-submit" onclick="submitBooking()">Забронировать время</button>
+      <p class="modal-note">После интеграции с DIKIDI запись пройдет автоматически. В данный момент мы свяжемся с вами лично.</p>
+    </div>
+    <div class="modal-success" id="modalSuccess">
+      <div class="check">✓</div>
+      <div class="modal-success-title">Принято</div>
+      <p>Заявка успешно оформлена. Мы свяжемся с вами в ближайшее время для подтверждения деталей визита.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+// NAV SCROLL
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 80);
+});
+
+// REVEAL
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// REVIEWS CAROUSEL
+const reviews = [
+  { name: 'Артём Козлов', time: '2 недели назад', stars: 5, title: 'Идеальный фейд и геометрия', text: 'Руслан выстроил идеальную форму. Четкие линии, плавные переходы. Мужская, строгая атмосфера без лишнего пафоса. Абсолютный рекомендасьон.', initials: 'АК' },
+  { name: 'Максим Ворошилов', time: '1 месяц назад', stars: 5, title: 'Бескомпромиссное качество', text: 'Вячеслав — настоящий перфекционист. Никакой суеты, только уверенные движения и результат, который превосходит ожидания. Пространство тоже на высоте.', initials: 'МВ' },
+  { name: 'Денис Романов', time: '3 недели назад', stars: 5, title: 'Стабильность и стиль', text: 'Сделал стрижку и архитектуру бороды. Результат безупречный. Чисто, аккуратно, со вкусом. Рекомендую всем, кто ценит свое время и имидж.', initials: 'ДР' },
+  { name: 'Илья Федотов', time: '1 месяц назад', stars: 5, title: 'Уровень столицы', text: 'Руслан с полуслова понимает задачу. Качество техники на уровне ведущих столичных барбершопов. Рад, что в Сатке появилось место такого формата.', initials: 'ИФ' },
+  { name: 'Сергей Новиков', time: '2 месяца назад', stars: 5, title: 'Выверенная работа', text: 'Отличный сервис. Мастер работает уверенно, инструмент всегда чистый. Визит прошел комфортно, стрижка лежит идеально даже спустя неделю.', initials: 'СН' },
+  { name: 'Антон Белов', time: '3 месяца назад', stars: 5, title: 'Профессионализм в деталях', text: 'Все аккуратно, в срок, без лишних разговоров. Чувствуется серьезный опыт и насмотренность мастеров. Однозначно буду рекомендовать коллегам.', initials: 'АБ' },
+];
+
+let current = 0;
+const track = document.getElementById('carouselTrack');
+const dotsWrap = document.getElementById('carouselDots');
+
+reviews.forEach((r, i) => {
+  const stars = Array.from({length:5}, (_,si) => `<span class="star">${si < r.stars ? '★' : '☆'}</span>`).join('');
+  track.innerHTML += `<div class="review-card">
+    <div class="review-stars">${stars}</div>
+    <div class="review-title">${r.title}</div>
+    <p class="review-text">"${r.text}"</p>
+    <div class="review-author">
+      <div class="review-avatar" style="background:rgba(255,255,255,0.03);color:#ffffff;border:1px solid rgba(255,255,255,0.1);">${r.initials}</div>
+      <div class="review-author-info"><strong>${r.name}</strong><span>${r.time}</span></div>
+    </div>
+  </div>`;
+  const dot = document.createElement('div');
+  dot.className = 'dot' + (i === 0 ? ' active' : '');
+  dot.onclick = () => goTo(i);
+  dotsWrap.appendChild(dot);
+});
+
+function goTo(n) {
+  current = (n + reviews.length) % reviews.length;
+  track.style.transform = `translateX(-${current * 100}%)`;
+  document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i === current));
+}
+document.getElementById('prevBtn').onclick = () => goTo(current - 1);
+document.getElementById('nextBtn').onclick = () => goTo(current + 1);
+
+// Auto-advance
+let autoTimer = setInterval(() => goTo(current + 1), 5000);
+track.parentElement.addEventListener('mouseenter', () => clearInterval(autoTimer));
+track.parentElement.addEventListener('mouseleave', () => { autoTimer = setInterval(() => goTo(current + 1), 5000); });
+
+// Touch swipe
+let touchStartX = 0;
+track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, {passive:true});
+track.addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 50) goTo(current + (diff > 0 ? 1 : -1));
+});
+
+// MODAL
+let selectedService = '';
+function openModal(name, price) {
+  selectedService = name;
+  document.getElementById('modalServiceName').textContent = name + ' — ' + price;
+  document.getElementById('modalForm').style.display = 'block';
+  document.getElementById('modalSuccess').style.display = 'none';
+  document.getElementById('bookName').value = '';
+  document.getElementById('bookPhone').value = '';
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeModalOutside(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+function submitBooking() {
+  const name = document.getElementById('bookName').value.trim();
+  const phone = document.getElementById('bookPhone').value.trim();
+  if (!name || !phone) {
+    document.getElementById('bookName').style.borderColor = !name ? 'rgba(255,255,255,0.3)' : '';
+    document.getElementById('bookPhone').style.borderColor = !phone ? 'rgba(255,255,255,0.3)' : '';
+    return;
+  }
+  document.getElementById('modalForm').style.display = 'none';
+  document.getElementById('modalSuccess').style.display = 'flex';
+}
+
+// PARALLAX
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      const heroBg = document.querySelector('.hero-bg');
+      if (heroBg) heroBg.style.transform = `translateY(${window.scrollY * 0.28}px)`;
+      ticking = false;
+    });
+    ticking = true;
+  }
+});
+</script>
+</body>
+</html>
