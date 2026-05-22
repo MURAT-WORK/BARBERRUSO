@@ -46,13 +46,13 @@ body::before {
   opacity: 0.25;
 }
 
-/* Global Fixed Background Layer (Slightly less blur for better detail visibility) */
+/* Global Fixed Background Layer (8px blur, locked height on mobile via JS) */
 .global-bg {
   position: fixed;
-  top: 0;
+  top: -40px; /* Небольшое смещение вверх для запаса */
   left: 0;
   width: 100%;
-  height: 100%;
+  height: calc(100vh + 120px); /* Запас высоты для мобильной адресной строки */
   z-index: -2;
   background-image: 
     linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.85) 100%),
@@ -60,8 +60,8 @@ body::before {
     url('img/background.jpg');
   background-size: cover;
   background-position: center top;
-  filter: blur(8px); /* Уменьшенный блюр для проявления деталей */
-  transform: scale(1.06); /* Компенсация краев из-за блюра */
+  filter: blur(8px); /* Наш размытый фон */
+  transform: scale(1.06); /* Компенсация размытия по краям */
   pointer-events: none;
 }
 
@@ -243,7 +243,7 @@ section { padding: 80px 24px; position: relative; }
   left: 50%;
   transform: translateX(-50%) scale(1.1);
   transform-origin: bottom center;
-  height: 112%;
+  height: 100%;
   width: auto;
   max-width: none;
   z-index: 3;
@@ -283,7 +283,7 @@ section { padding: 80px 24px; position: relative; }
   .master-card-h.viach .master-h-photo   { order: 1; }
   .master-card-h.viach .master-h-content { order: 2; }
   .master-h-photo { width: 100%; height: 260px; overflow: visible; }
-  .master-png-img { height: 110%; }
+  .master-png-img { height: 100%; }
   .master-photo-grid { border-radius: 20px 20px 0 0 !important; }
   .master-h-content { padding: 28px 24px; text-align: center; }
   .master-socials { justify-content: center; }
@@ -592,7 +592,7 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
       <div class="price-info">
         <div class="price-name-row">
           <span class="price-name">Стрижка + борода</span>
-          <span class="popular-badge">Популярное</span>
+          <span class="popular-badge">Топ</span>
         </div>
         <div class="price-duration">≈ 60–75 минут</div>
       </div>
@@ -819,18 +819,16 @@ function submitBooking() {
   document.getElementById('modalSuccess').style.display = 'flex';
 }
 
-// PARALLAX
-let ticking = false;
-window.addEventListener('scroll', () => {
-  if (!ticking) {
-    requestAnimationFrame(() => {
-      const heroBg = document.querySelector('.hero-bg');
-      if (heroBg) heroBg.style.transform = `translateY(${window.scrollY * 0.28}px)`;
-      ticking = false;
-    });
-    ticking = true;
+// Fixed Background Height Lock for Mobile Browsers to prevent any layout shifts
+const lockBgHeight = () => {
+  const bg = document.querySelector('.global-bg');
+  if (bg) {
+    // Lock the height using precise innerHeight plus buffer for dynamic address bars
+    bg.style.height = (window.innerHeight + 120) + 'px';
   }
-});
+};
+window.addEventListener('DOMContentLoaded', lockBgHeight);
+window.addEventListener('resize', lockBgHeight);
 </script>
 </body>
 </html>
