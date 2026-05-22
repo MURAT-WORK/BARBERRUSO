@@ -46,13 +46,13 @@ body::before {
   opacity: 0.25;
 }
 
-/* Global Fixed Background Layer (8px blur, locked height on mobile via JS) */
+/* Global Fixed Background Layer (8px blur, locked to physical screen size) */
 .global-bg {
   position: fixed;
-  top: -40px; /* Небольшое смещение вверх для запаса */
+  top: -40px; 
   left: 0;
   width: 100%;
-  height: calc(100vh + 120px); /* Запас высоты для мобильной адресной строки */
+  height: 100vh; /* Базовый фолбек */
   z-index: -2;
   background-image: 
     linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.85) 100%),
@@ -243,7 +243,7 @@ section { padding: 80px 24px; position: relative; }
   left: 50%;
   transform: translateX(-50%) scale(1.1);
   transform-origin: bottom center;
-  height: 100%;
+  height: 112%;
   width: auto;
   max-width: none;
   z-index: 3;
@@ -283,7 +283,7 @@ section { padding: 80px 24px; position: relative; }
   .master-card-h.viach .master-h-photo   { order: 1; }
   .master-card-h.viach .master-h-content { order: 2; }
   .master-h-photo { width: 100%; height: 260px; overflow: visible; }
-  .master-png-img { height: 100%; }
+  .master-png-img { height: 110%; }
   .master-photo-grid { border-radius: 20px 20px 0 0 !important; }
   .master-h-content { padding: 28px 24px; text-align: center; }
   .master-socials { justify-content: center; }
@@ -501,7 +501,7 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
 </head>
 <body>
 
-<!-- Global Fixed Background Layer (8px blur, completely stable on mobile) -->
+<!-- Global Fixed Background Layer (8px blur, completely locked on mobile) -->
 <div class="global-bg"></div>
 
 <!-- NAVBAR (Permanently fixed in space) -->
@@ -819,16 +819,20 @@ function submitBooking() {
   document.getElementById('modalSuccess').style.display = 'flex';
 }
 
-// Fixed Background Height Lock for Mobile Browsers to prevent any layout shifts
+// Fixed Background Height Lock for Mobile Browsers (strictly locked to physical screen size to prevent any dynamic shifts)
 const lockBgHeight = () => {
   const bg = document.querySelector('.global-bg');
   if (bg) {
-    // Lock the height using precise innerHeight plus buffer for dynamic address bars
-    bg.style.height = (window.innerHeight + 120) + 'px';
+    // Math.max guarantees the height handles any browser toolbar offsets without resizing during scroll
+    const targetHeight = Math.max(window.screen.height, window.innerHeight) + 120;
+    bg.style.height = targetHeight + 'px';
   }
 };
 window.addEventListener('DOMContentLoaded', lockBgHeight);
-window.addEventListener('resize', lockBgHeight);
+window.addEventListener('load', lockBgHeight);
+window.addEventListener('orientationchange', () => {
+  setTimeout(lockBgHeight, 200);
+});
 </script>
 </body>
 </html>
