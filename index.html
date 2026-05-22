@@ -46,7 +46,7 @@ body::before {
   opacity: 0.25;
 }
 
-/* Global Fixed Background Layer (8px blur, locked to physical screen size) */
+/* Global Fixed Background Layer (8px blur, completely stable on mobile) */
 .global-bg {
   position: fixed;
   top: -40px; 
@@ -250,6 +250,11 @@ section { padding: 80px 24px; position: relative; }
   pointer-events: none;
 }
 
+/* Vyacheslav's photo is set to exactly 100% height to prevent any layout clipping */
+.viach .master-png-img {
+  height: 100%;
+}
+
 .master-photo-grid { 
   position: absolute; inset: 0; 
   background-image: repeating-linear-gradient(rgba(255,255,255,0.01) 0, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 36px), repeating-linear-gradient(90deg, rgba(255,255,255,0.01) 0, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 36px); 
@@ -284,6 +289,7 @@ section { padding: 80px 24px; position: relative; }
   .master-card-h.viach .master-h-content { order: 2; }
   .master-h-photo { width: 100%; height: 260px; overflow: visible; }
   .master-png-img { height: 110%; }
+  .viach .master-png-img { height: 100%; }
   .master-photo-grid { border-radius: 20px 20px 0 0 !important; }
   .master-h-content { padding: 28px 24px; text-align: center; }
   .master-socials { justify-content: center; }
@@ -348,7 +354,15 @@ section { padding: 80px 24px; position: relative; }
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
 }
-.price-card:hover .price-book-btn, .price-card.active .price-book-btn { display: block; animation: fadeUp 0.25s ease; }
+
+/* Only show booking button on PC hover states, keeping mobile layout clean */
+@media (hover: hover) {
+  .price-card:hover .price-book-btn, .price-card.active .price-book-btn { 
+    display: block; 
+    animation: fadeUp 0.25s ease; 
+  }
+}
+
 .price-book-btn:hover { background: #E5E5E5; box-shadow: 0 6px 20px rgba(255,255,255,0.15); }
 
 /* ===== MODAL ===== */
@@ -501,7 +515,7 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
 </head>
 <body>
 
-<!-- Global Fixed Background Layer (8px blur, completely locked on mobile) -->
+<!-- Global Fixed Background Layer (8px blur, completely stable on mobile) -->
 <div class="global-bg"></div>
 
 <!-- NAVBAR (Permanently fixed in space) -->
@@ -818,6 +832,19 @@ function submitBooking() {
   document.getElementById('modalForm').style.display = 'none';
   document.getElementById('modalSuccess').style.display = 'flex';
 }
+
+// PARALLAX
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      const heroBg = document.querySelector('.hero-bg');
+      if (heroBg) heroBg.style.transform = `translateY(${window.scrollY * 0.28}px)`;
+      ticking = false;
+    });
+    ticking = true;
+  }
+});
 
 // Fixed Background Height Lock for Mobile Browsers (strictly locked to physical screen size to prevent any dynamic shifts)
 const lockBgHeight = () => {
