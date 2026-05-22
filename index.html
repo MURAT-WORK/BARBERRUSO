@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="description" content="BARBERRUSO — премиальные мужские стрижки в Сатке. Современный подход, стиль и атмосфера.">
 <title>BARBERRUSO — Премиальный барбершоп в Сатке</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,12 +19,19 @@
   --glass-border: rgba(255,255,255,0.07);
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { 
+  scroll-behavior: smooth; 
+  max-width: 100%;
+  overflow-x: hidden;
+  width: 100%;
+}
 body {
   background: var(--bg0);
   color: var(--acc1);
   font-family: 'Montserrat Alternates', sans-serif;
+  max-width: 100%;
   overflow-x: hidden;
+  width: 100%;
   -webkit-font-smoothing: antialiased;
   text-align: center;
 }
@@ -38,29 +45,34 @@ body::before {
   opacity: 0.25;
 }
 
-/* NAV */
+/* NAV - Always fixed rounded pill at a lower position */
 .nav {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 320px;
+  height: 54px;
   z-index: 1000;
-  padding: 28px 24px;
-  height: 90px;
+  background: rgba(12, 12, 12, 0.75);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 100px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.8);
   display: flex;
   align-items: center;
-  background: transparent;
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  justify-content: center;
+  padding: 0;
 }
 .nav-logo {
-  position: absolute;
-  left: 24px;
-  transform: translateX(0);
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 26px;
-  letter-spacing: 3px;
+  font-size: 22px;
+  letter-spacing: 4px;
   color: var(--acc1);
   text-decoration: none;
   font-weight: 400;
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .nav-logo span { 
   color: var(--acc1); 
@@ -68,33 +80,8 @@ body::before {
   opacity: 0.5;
 }
 
-/* Scrolled state */
-.nav.scrolled {
-  top: 16px;
-  left: 50%;
-  right: auto;
-  transform: translateX(-50%);
-  width: calc(100% - 32px);
-  max-width: 320px;
-  height: 54px;
-  background: rgba(12, 12, 12, 0.75);
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 100px;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.8);
-  padding: 0;
-}
-.nav.scrolled .nav-logo {
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 22px;
-  letter-spacing: 4px;
-}
-
 @media (min-width: 768px) {
-  .nav { padding: 28px 40px; }
-  .nav-logo { left: 40px; }
+  .nav { top: 28px; }
 }
 
 /* HERO */
@@ -148,7 +135,14 @@ body::before {
 }
 .hero-title span { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.25); }
 .hero-sub { font-size: clamp(13px, 3vw, 16px); font-weight: 400; color: var(--acc1); opacity: 0.8; letter-spacing: 1px; margin-bottom: 16px; opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.6s; }
-.hero-desc { font-size: 14px; line-height: 1.8; color: var(--acc2); margin: 0 auto 36px; max-width: 480px; opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.8s; }
+
+/* Empty space ("air") instead of description text */
+.hero-desc-spacer {
+  height: 56px;
+  opacity: 0;
+  animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.8s;
+}
+
 .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 48px; opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 1s; }
 
 .btn-primary {
@@ -166,11 +160,6 @@ body::before {
   cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .btn-secondary:hover { border-color: var(--acc1); background: rgba(255,255,255,0.03); transform: translateY(-2px); }
-
-.hero-perks { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 1.2s; }
-.perk { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 500; color: var(--acc2); letter-spacing: 0.5px; }
-.perk-check { width: 18px; height: 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 8px; color: var(--acc1); }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 
 /* SECTIONS */
 section { padding: 80px 24px; position: relative; }
@@ -194,7 +183,7 @@ section { padding: 80px 24px; position: relative; }
 .divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--glass-border), transparent); }
 
 /* ===== MASTERS ===== */
-.masters-bg { background: linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 50%, var(--bg0) 100%); }
+.masters-bg { background: linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 50%, var(--bg0) 100%); overflow-x: hidden; }
 .masters-list { display: flex; flex-direction: column; gap: 28px; max-width: 960px; margin: 0 auto; }
 
 .master-card-h {
@@ -232,6 +221,7 @@ section { padding: 80px 24px; position: relative; }
   background: transparent;
 }
 
+/* Static PNG styling with no hover zoom */
 .master-png-img {
   position: absolute;
   bottom: 0;
@@ -240,13 +230,9 @@ section { padding: 80px 24px; position: relative; }
   transform-origin: bottom center;
   height: 112%;
   width: auto;
-  max-width: none; /* Защита от сжатия */
+  max-width: none;
   z-index: 3;
   pointer-events: none;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.master-card-h:hover .master-png-img {
-  transform: translateX(-50%) scale(1.18);
 }
 
 .master-photo-grid { 
@@ -456,11 +442,23 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
 @media (min-width: 1440px) {
   section { padding: 140px 120px; }
 }
+
+/* Animations - RESTORED KEYFRAMES */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
+<!-- NAVBAR (Permanently fixed in space) -->
 <nav class="nav" id="navbar">
   <a href="#" class="nav-logo">BARBER<span>RUSO</span></a>
 </nav>
@@ -476,15 +474,13 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
     <div class="hero-eyebrow">ПРЕМИАЛЬНОЕ МУЖСКОЕ ПРОСТРАНСТВО</div>
     <h1 class="hero-title">BARBER<br><span>RUSO</span></h1>
     <p class="hero-sub">Безупречная эстетика мужского стиля в Сатке</p>
-    <p class="hero-desc">Строгая классика и современный подход. Место, где форма встречается с содержанием, а каждая деталь подчинена вашему стилю.</p>
+    
+    <!-- Vertical spacer ("air") in place of the removed description -->
+    <div class="hero-desc-spacer"></div>
+
     <div class="hero-btns">
       <button class="btn-primary" onclick="document.getElementById('prices').scrollIntoView({behavior:'smooth'})">Меню услуг</button>
       <button class="btn-secondary" onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})">Портфолио</button>
-    </div>
-    <div class="hero-perks">
-      <div class="perk"><div class="perk-check">✓</div>Мастерство</div>
-      <div class="perk"><div class="perk-check">✓</div>Точность</div>
-      <div class="perk"><div class="perk-check">✓</div>Сервис</div>
     </div>
   </div>
 </section>
@@ -511,7 +507,7 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 1 0 24 12 12 12 0 0 0 11.944 0zm6.063 8.234-2.01 9.47c-.148.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.873.75z"/></svg>
           </a>
           <a class="social-btn" href="https://www.instagram.com/barber_ruso/" target="_blank" title="Instagram">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07;"></path></svg>
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           </a>
         </div>
       </div>
@@ -585,7 +581,7 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
       </div>
       <div class="price-right">
         <div class="price-amount">1000 ₽</div>
-        <button class="price-book-btn" onclick="event.stopPropagation(); openModal('Fade / Машинка','1000 ₽')">Записаться</button>
+        <button class="price-book-btn" onclick="event.stopPropagation(); openModal('Fade / Стрижка машинкой','1000 ₽')">Записаться</button>
       </div>
     </div>
     <div class="price-card reveal reveal-delay-5" onclick="openModal('Детская стрижка','1000 ₽')">
@@ -652,7 +648,7 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
         <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 1 0 24 12 12 12 0 0 0 11.944 0zm6.063 8.234-2.01 9.47c-.148.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.873.75z"/></svg>
       </a>
       <a class="footer-social" href="https://www.instagram.com/barber_ruso/" target="_blank" title="Instagram">
-        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07;"></path></svg>
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
       </a>
     </div>
   </div>
@@ -687,12 +683,6 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
 </div>
 
 <script>
-// NAV SCROLL
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 80);
-});
-
 // REVEAL
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
