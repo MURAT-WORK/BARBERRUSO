@@ -3,10 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="description" content="BARBERRUSO — премиальные мужские стрижки в Сатке. Современный подход, стиль и атмосфера.">
-<title>BARBERRUSO — Премиальный барбершоп в Сатке</title>
+
+<!-- SEO ОПТИМИЗАЦИЯ -->
+<title>BARBERRUSO — Премиальный мужской барбершоп в Сатке</title>
+<meta name="description" content="BARBERRUSO — Премиальное мужское пространство в Сатке. Профессиональные мужские стрижки, фейд (fade), моделирование бороды и бритье. Безупречный сервис и эстетика.">
+<meta name="keywords" content="барбершоп сатка, мужские стрижки сатка, стрижка бороды сатка, барбер руслан сатка, barberruso, фейд сатка, кроп, мужская парикмахерская">
+<meta name="author" content="BARBERRUSO">
+<link rel="canonical" href="https://barberruso.ru/"> <!-- Замени на свой реальный домен, если есть -->
+
+<!-- OPEN GRAPH (Для красивых ссылок в Telegram, VK, WhatsApp) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="BARBERRUSO — Премиальный барбершоп в Сатке">
+<meta property="og:description" content="Мужские стрижки, архитектура бороды и безупречный стиль. Забронируйте время онлайн.">
+<meta property="og:url" content="https://barberruso.ru/">
+<meta property="og:image" content="img/background.jpg">
+<meta property="og:site_name" content="BARBERRUSO">
+
+<!-- ИКОНКА САЙТА С ОБВОДКОЙ -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%231C1C1C'/%3E%3Cg transform='scale(0.85, 1.15) translate(8, -8)'%3E%3Ctext x='44' y='66' font-family='Arial, sans-serif' font-weight='900' font-size='56' fill='%23FFFFFF' text-anchor='middle'%3EB%3C/text%3E%3Ctext x='60' y='72' font-family='Arial, sans-serif' font-weight='900' font-size='56' fill='%23000000' stroke='%23000000' stroke-width='6' text-anchor='middle'%3ER%3C/text%3E%3Ctext x='60' y='72' font-family='Arial, sans-serif' font-weight='900' font-size='56' fill='%23A6A6A6' text-anchor='middle'%3ER%3C/text%3E%3C/g%3E%3C/svg%3E">
+
+<!-- ШРИФТЫ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat+Alternates:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
 :root {
   --bg0: #000000;
@@ -149,6 +168,7 @@ body::before {
 .hero-sub { font-size: clamp(13px, 3vw, 16px); font-weight: 400; color: var(--acc1); opacity: 0.8; letter-spacing: 1px; margin-bottom: 16px; opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.6s; }
 .hero-desc-spacer { height: 56px; opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.8s; }
 .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 48px; opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 1s; }
+
 .btn-primary {
   padding: 14px 28px; background: var(--acc1); color: var(--bg0);
   border: 1px solid var(--acc1); border-radius: 8px;
@@ -213,6 +233,7 @@ section { padding: 80px 24px; position: relative; }
 .master-card-h.viach .master-photo-grid { border-radius: 20px 0 0 20px; }
 .master-h-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.6) 0%, transparent 50%); z-index: 2; pointer-events: none; }
 .master-card-h.viach .master-h-photo::after { background: linear-gradient(to left, rgba(0,0,0,0.6) 0%, transparent 50%); }
+
 .master-role { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--acc2); margin-bottom: 8px; opacity: 0.8; }
 .master-name { font-family: 'Montserrat Alternates', sans-serif; font-size: 32px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; line-height: 1; }
 .master-desc { font-size: 13px; line-height: 1.8; color: var(--acc2); margin-bottom: 22px; }
@@ -283,14 +304,15 @@ section { padding: 80px 24px; position: relative; }
   background: var(--bg2);
   border: 1px solid var(--glass-border);
   opacity: 0.35;
-  transform: scale(0.9);
+  transform: scale(0.9) translateZ(0); /* Hardware acceleration & Safari corner fix */
+  -webkit-mask-image: -webkit-radial-gradient(white, black); /* Force border-radius clip */
   transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   pointer-events: none; 
   user-select: none;
 }
-.portfolio-slide.active { opacity: 1; transform: scale(1); box-shadow: 0 30px 60px rgba(0,0,0,0.6); }
-.portfolio-slide-img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; user-select: none; }
+.portfolio-slide.active { opacity: 1; transform: scale(1) translateZ(0); box-shadow: 0 30px 60px rgba(0,0,0,0.6); }
+.portfolio-slide-img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; pointer-events: none; user-select: none; }
 
 .story-header { position: absolute; top: 16px; left: 16px; display: flex; align-items: center; gap: 10px; z-index: 4; pointer-events: none; }
 .story-avatar { width: 32px; height: 32px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); border: 1.5px solid var(--acc1); display: flex; align-items: center; justify-content: center; font-family: 'Montserrat Alternates', sans-serif; font-size: 13px; color: var(--acc1); font-weight: 700; }
@@ -390,6 +412,25 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
 .modal-success .check { width: 60px; height: 60px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--acc1); }
 .modal-success p { font-size: 14px; color: var(--acc2); line-height: 1.6; }
 </style>
+
+<!-- JSON-LD ДЛЯ ЛОКАЛЬНОГО БИЗНЕСА (ЯНДЕКС И GOOGLE) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HairSalon",
+  "name": "BARBERRUSO",
+  "image": "https://barberruso.ru/img/background.jpg",
+  "description": "Премиальный мужской барбершоп в Сатке. Мужские стрижки, оформление бороды, фейд.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ул. Солнечная 11",
+    "addressLocality": "Сатка",
+    "addressCountry": "RU"
+  },
+  "telephone": "+79822826697",
+  "priceRange": "$$"
+}
+</script>
 </head>
 <body>
 
@@ -449,7 +490,7 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
       </div>
       <div class="master-h-photo">
         <div class="master-photo-grid"></div>
-        <img src="img/master-ruslan.png" class="master-png-img" alt="Руслан">
+        <img src="img/master-ruslan.png" class="master-png-img" alt="Барбер Руслан - основатель BarberRuso Сатка">
       </div>
     </div>
 
@@ -457,7 +498,7 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
     <div class="master-card-h viach reveal reveal-delay-2">
       <div class="master-h-photo">
         <div class="master-photo-grid"></div>
-        <img src="img/master-viach.png" class="master-png-img" alt="Вячеслав">
+        <img src="img/master-viach.png" class="master-png-img" alt="Барбер Вячеслав - стилист BarberRuso Сатка">
       </div>
       <div class="master-h-content">
         <div class="master-role">Барбер · Стилист</div>
@@ -554,7 +595,7 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
           <div class="story-avatar">1</div>
           <span class="story-title">Фейд</span>
         </div>
-        <img src="img/portfolio-fade.png" alt="Fade" class="portfolio-slide-img">
+        <img src="img/portfolio-fade.png" alt="Стрижка Фейд (Fade) Сатка" class="portfolio-slide-img">
       </div>
       
       <!-- Slide 2: Beard -->
@@ -563,7 +604,7 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
           <div class="story-avatar">2</div>
           <span class="story-title">Борода</span>
         </div>
-        <img src="img/portfolio-beard.png" alt="Beard" class="portfolio-slide-img">
+        <img src="img/portfolio-beard.png" alt="Оформление бороды Сатка" class="portfolio-slide-img">
       </div>
       
       <!-- Slide 3: Skin -->
@@ -572,7 +613,7 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
           <div class="story-avatar">3</div>
           <span class="story-title">Скин фейд</span>
         </div>
-        <img src="img/portfolio-skin.png" alt="Skin" class="portfolio-slide-img">
+        <img src="img/portfolio-skin.png" alt="Стрижка Скин Фейд Сатка" class="portfolio-slide-img">
       </div>
       
       <!-- Slide 4: Style -->
@@ -581,7 +622,7 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
           <div class="story-avatar">4</div>
           <span class="story-title">Кроп</span>
         </div>
-        <img src="img/portfolio-style.png" alt="Style" class="portfolio-slide-img">
+        <img src="img/portfolio-style.png" alt="Стрижка Кроп Сатка" class="portfolio-slide-img">
       </div>
       
       <!-- Slide 5: Buzz -->
@@ -590,7 +631,7 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
           <div class="story-avatar">5</div>
           <span class="story-title">Милитари</span>
         </div>
-        <img src="img/portfolio-buzz.png" alt="Buzz" class="portfolio-slide-img">
+        <img src="img/portfolio-buzz.png" alt="Стрижка Милитари (Buzz Cut) Сатка" class="portfolio-slide-img">
       </div>
       
       <!-- Slide 6: Trim -->
@@ -599,7 +640,7 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
           <div class="story-avatar">6</div>
           <span class="story-title">Коррекция</span>
         </div>
-        <img src="img/portfolio-trim.png" alt="Trim" class="portfolio-slide-img">
+        <img src="img/portfolio-trim.png" alt="Коррекция бороды Сатка" class="portfolio-slide-img">
       </div>
       
       <!-- Slide 7: Crew -->
@@ -608,7 +649,7 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
           <div class="story-avatar">7</div>
           <span class="story-title">Полубокс</span>
         </div>
-        <img src="img/portfolio-crew.png" alt="Crew" class="portfolio-slide-img">
+        <img src="img/portfolio-crew.png" alt="Стрижка Полубокс Сатка" class="portfolio-slide-img">
       </div>
       
       <!-- Slide 8: Clas -->
@@ -617,7 +658,7 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
           <div class="story-avatar">8</div>
           <span class="story-title">Классика</span>
         </div>
-        <img src="img/portfolio-clas.png" alt="Classic" class="portfolio-slide-img">
+        <img src="img/portfolio-clas.png" alt="Классическая мужская стрижка Сатка" class="portfolio-slide-img">
       </div>
 
     </div>
@@ -625,7 +666,7 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
 
   <!-- PC Navigation Controls -->
   <div class="portfolio-nav reveal">
-    <button class="portfolio-btn" id="pPrevBtn" aria-label="Назад">&#8592;</button>
+    <button class="portfolio-btn disabled" id="pPrevBtn" aria-label="Назад">&#8592;</button>
     <button class="portfolio-btn" id="pNextBtn" aria-label="Вперед">&#8594;</button>
   </div>
 </section>
@@ -680,7 +721,6 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
       <div class="modal-title">BARBERRUSO</div>
       <div class="modal-service">Услуга: <span id="modalServiceName"></span></div>
       <div class="modal-fields">
-        <!-- Разделенные поля для Имени и Фамилии -->
         <input class="modal-input" type="text" id="bookFirstName" placeholder="Имя" autocomplete="given-name">
         <input class="modal-input" type="text" id="bookLastName" placeholder="Фамилия" autocomplete="family-name">
         <input class="modal-input" type="tel" id="bookPhone" placeholder="Номер телефона" autocomplete="tel">
@@ -737,7 +777,6 @@ function goToReview(n) {
 document.getElementById('prevBtn').onclick = () => goToReview(rCurrent - 1);
 document.getElementById('nextBtn').onclick = () => goToReview(rCurrent + 1);
 
-// Touch swipe for Reviews
 let rTouchStartX = 0;
 rTrack.parentElement.addEventListener('touchstart', e => { rTouchStartX = e.touches[0].clientX; }, {passive:true});
 rTrack.parentElement.addEventListener('touchend', e => {
@@ -794,14 +833,10 @@ function submitBooking() {
   
   if (hasError) return;
   
-  const message = `Здравствуйте! Хочу записаться на услугу.\n\n` +
-                  `Услуга: ${selectedService}\n` +
-                  `Имя: ${firstName}\n` +
-                  `Фамилия: ${lastName}\n` +
-                  `Телефон: ${phone}`;
-                  
+  const message = `Здравствуйте! Хочу записаться на услугу.\n\nУслуга: ${selectedService}\nИмя: ${firstName}\nФамилия: ${lastName}\nТелефон: ${phone}`;
   const encodedMessage = encodeURIComponent(message);
   const telegramUrl = `https://t.me/BarberRuso?text=${encodedMessage}`;
+  
   window.open(telegramUrl, '_blank');
   closeModal();
 }
@@ -816,30 +851,27 @@ const lockBgHeight = () => {
 };
 window.addEventListener('DOMContentLoaded', lockBgHeight);
 window.addEventListener('load', lockBgHeight);
-window.addEventListener('orientationchange', () => {
-  setTimeout(lockBgHeight, 200);
-});
+window.addEventListener('orientationchange', () => { setTimeout(lockBgHeight, 200); });
 
-// --- STRICT 1-to-8 LINEAR PORTFOLIO CAROUSEL ENGINE ---
+// --- STRICT LINEAR PORTFOLIO CAROUSEL ENGINE ---
 const pTrack = document.getElementById('portfolioTrack');
 const pSlides = document.querySelectorAll('.portfolio-slide');
 const pViewport = document.getElementById('portfolioViewport');
 const pPrevBtn = document.getElementById('pPrevBtn');
 const pNextBtn = document.getElementById('pNextBtn');
 
-let pIndex = 0; // Starts strictly at 0 (First image)
+let pIndex = 0; // Starts strictly at 0
 let pStartX = 0;
 let pCurrentTranslate = 0;
 let pPrevTranslate = 0;
 let pIsDragging = false;
-let pMargin = window.innerWidth < 768 ? 12 : 16;
-let pSlideWidth = pSlides[0].offsetWidth + pMargin * 2;
 
 function updatePortfolioLayout() {
   const viewportWidth = pViewport.clientWidth;
-  pMargin = window.innerWidth < 768 ? 12 : 16;
-  pSlideWidth = pSlides[0].offsetWidth + pMargin * 2;
+  const pMargin = window.innerWidth < 768 ? 12 : 16;
+  const pSlideWidth = pSlides[0].offsetWidth + pMargin * 2;
   
+  // Calculate exact translation to center current slide
   pCurrentTranslate = (viewportWidth / 2) - (pIndex * pSlideWidth + pSlideWidth / 2);
   pPrevTranslate = pCurrentTranslate;
   
@@ -855,10 +887,9 @@ function updatePortfolioLayout() {
   if(pNextBtn) pNextBtn.classList.toggle('disabled', pIndex === pSlides.length - 1);
 }
 
-// Strictly bounded PC Button Click Handlers
+// PC Button Click Handlers (Strictly bounded)
 function movePortfolio(direction) {
   pIndex += direction;
-  // Hard clamp boundaries (0 to 7)
   if (pIndex < 0) pIndex = 0;
   if (pIndex > pSlides.length - 1) pIndex = pSlides.length - 1;
   updatePortfolioLayout();
@@ -867,7 +898,7 @@ function movePortfolio(direction) {
 if(pPrevBtn) pPrevBtn.onclick = () => movePortfolio(-1);
 if(pNextBtn) pNextBtn.onclick = () => movePortfolio(1);
 
-// Mobile Touch Swipe Handlers ONLY (Mouse removed)
+// Mobile Touch Swipe Handlers ONLY (Mouse completely disabled)
 function pOnTouchStart(e) {
   pIsDragging = true;
   pStartX = e.touches[0].clientX;
@@ -878,16 +909,14 @@ function pOnTouchMove(e) {
   if (!pIsDragging) return;
   const currentX = e.touches[0].clientX;
   const diff = currentX - pStartX;
-  const tempTranslate = pPrevTranslate + diff;
-  pTrack.style.transform = `translateX(${tempTranslate}px)`;
+  pTrack.style.transform = `translateX(${pPrevTranslate + diff}px)`;
 }
 
 function pOnTouchEnd(e) {
   if (!pIsDragging) return;
   pIsDragging = false;
   
-  const endX = e.changedTouches[0].clientX;
-  const diff = endX - pStartX;
+  const diff = e.changedTouches[0].clientX - pStartX;
   
   // Swipe Logic with strict boundaries
   if (diff < -50 && pIndex < pSlides.length - 1) {
@@ -895,7 +924,6 @@ function pOnTouchEnd(e) {
   } else if (diff > 50 && pIndex > 0) {
     pIndex -= 1;
   }
-  
   updatePortfolioLayout();
 }
 
@@ -904,13 +932,9 @@ pViewport.addEventListener('touchmove', pOnTouchMove, { passive: true });
 pViewport.addEventListener('touchend', pOnTouchEnd);
 
 // Recalculate layout on load & window resizing
-window.addEventListener('DOMContentLoaded', () => {
-  setTimeout(updatePortfolioLayout, 150);
-});
+window.addEventListener('DOMContentLoaded', () => { setTimeout(updatePortfolioLayout, 150); });
 window.addEventListener('resize', updatePortfolioLayout);
-window.addEventListener('orientationchange', () => {
-  setTimeout(updatePortfolioLayout, 200);
-});
+window.addEventListener('orientationchange', () => { setTimeout(updatePortfolioLayout, 200); });
 </script>
 </body>
 </html>
