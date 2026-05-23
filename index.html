@@ -46,7 +46,7 @@ body::before {
   opacity: 0.25;
 }
 
-/* Global Fixed Background Layer */
+/* Global Fixed Background Layer (Lighter mask for much better image visibility on mobile) */
 .global-bg {
   position: fixed;
   top: -40px; 
@@ -55,17 +55,17 @@ body::before {
   height: 100vh;
   z-index: -2;
   background-image: 
-    linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.85) 100%),
-    radial-gradient(circle at 50% 35%, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.9) 90%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%),
+    radial-gradient(circle at 50% 35%, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.5) 90%),
     url('img/background.jpg');
   background-size: cover;
   background-position: center top;
-  filter: blur(8px); 
-  transform: scale(1.06); 
+  filter: blur(8px);
+  transform: scale(1.06);
   pointer-events: none;
 }
 
-/* NAV */
+/* NAV - Always fixed rounded pill at a lower position */
 .nav {
   position: fixed;
   top: 24px;
@@ -149,6 +149,7 @@ body::before {
 .hero-title span { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.25); }
 .hero-sub { font-size: clamp(13px, 3vw, 16px); font-weight: 400; color: var(--acc1); opacity: 0.8; letter-spacing: 1px; margin-bottom: 16px; opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.6s; }
 
+/* Empty space ("air") instead of description text */
 .hero-desc-spacer {
   height: 56px;
   opacity: 0;
@@ -235,6 +236,7 @@ section { padding: 80px 24px; position: relative; }
   background: transparent;
 }
 
+/* Static PNG styling with no hover zoom */
 .master-png-img {
   position: absolute;
   bottom: 0;
@@ -311,6 +313,7 @@ section { padding: 80px 24px; position: relative; }
 .price-card:hover { border-color: rgba(255,255,255,0.15); transform: translateX(4px); }
 .price-card.popular { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.12); }
 
+/* Standard Price-info Row styling */
 .price-name-row {
   display: flex;
   align-items: center;
@@ -350,6 +353,7 @@ section { padding: 80px 24px; position: relative; }
   white-space: nowrap;
 }
 
+/* Only show booking button on PC hover states, keeping mobile layout clean */
 @media (hover: hover) {
   .price-card:hover .price-book-btn, .price-card.active .price-book-btn { 
     display: block; 
@@ -358,80 +362,133 @@ section { padding: 80px 24px; position: relative; }
 }
 .price-book-btn:hover { background: #E5E5E5; box-shadow: 0 6px 20px rgba(255,255,255,0.15); }
 
-/* ===== MODAL ===== */
-.modal-overlay {
-  position: fixed; inset: 0; z-index: 2000;
-  background: rgba(0,0,0,0.85);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  display: flex; align-items: center; justify-content: center;
-  padding: 20px;
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.modal-overlay.open { opacity: 1; pointer-events: all; }
-.modal {
-  background: rgba(10, 10, 10, 0.85);
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  padding: 36px 32px;
-  width: 100%; max-width: 440px;
+/* ===== PORTFOLIO CAROUSEL (Linear 1-to-8 Strict) ===== */
+.portfolio-bg { background: transparent; overflow-x: hidden; width: 100%; position: relative; }
+
+.portfolio-viewport {
   position: relative;
-  transform: translateY(20px) scale(0.97);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  padding: 24px 0;
+  touch-action: pan-y; /* Lock vertical scrolling, capture horizontal swipes on mobile */
 }
-.modal-overlay.open .modal { transform: translateY(0) scale(1); }
-.modal-close {
-  position: absolute; top: 16px; right: 16px;
-  width: 32px; height: 32px;
-  background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 8px;
-  color: var(--acc2); font-size: 14px; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: all 0.2s;
-}
-.modal-close:hover { background: rgba(255,255,255,0.08); color: var(--acc1); }
-.modal-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--acc2); margin-bottom: 8px; }
-.modal-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 2px; margin-bottom: 6px; }
-.modal-service { font-size: 13px; color: var(--acc2); margin-bottom: 28px; }
-.modal-service span { color: var(--acc1); font-weight: 600; }
-.modal-fields { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
-.modal-input {
-  width: 100%; padding: 13px 16px;
-  background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 10px;
-  color: var(--acc1); font-family: 'Montserrat Alternates', sans-serif; font-size: 14px;
-  outline: none; transition: border-color 0.3s;
-  text-align: left;
-}
-.modal-input::placeholder { color: rgba(255,255,255,0.25); }
-.modal-input:focus { border-color: rgba(255,255,255,0.25); }
-.modal-submit {
-  width: 100%; padding: 15px;
-  background: var(--acc1); color: var(--bg0);
-  border: none; border-radius: 10px;
-  font-family: 'Montserrat Alternates', sans-serif; font-size: 14px; font-weight: 600;
-  cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.modal-submit:hover { background: #E5E5E5; box-shadow: 0 8px 28px rgba(255,255,255,0.15); }
-.modal-note { font-size: 11px; color: var(--acc2); opacity: 0.5; margin-top: 12px; }
-.modal-success { display: none; flex-direction: column; align-items: center; gap: 12px; padding: 20px 0; }
-.modal-success .check { width: 60px; height: 60px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--acc1); }
-.modal-success p { font-size: 14px; color: var(--acc2); line-height: 1.6; }
 
-/* ===== GALLERY ===== */
-.gallery-bg { background: transparent; }
-.gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; max-width: 1100px; margin: 0 auto; }
-.gallery-item { aspect-ratio: 4/5; background: var(--bg2); border-radius: 12px; overflow: hidden; position: relative; cursor: pointer; }
-.gallery-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.01) 0%, var(--bg2) 50%, rgba(255,255,255,0.01) 100%); position: relative; }
-.gallery-placeholder::after { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(rgba(255,255,255,0.008) 0, rgba(255,255,255,0.008) 1px, transparent 1px, transparent 30px), repeating-linear-gradient(90deg, rgba(255,255,255,0.008) 0, rgba(255,255,255,0.008) 1px, transparent 1px, transparent 30px); }
-.gallery-placeholder-icon { font-family: 'Montserrat Alternates', sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 2px; color: rgba(255,255,255,0.05); z-index: 1; }
-.gallery-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.75); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; backdrop-filter: blur(4px); }
-.gallery-item:hover .gallery-overlay { opacity: 1; }
-.gallery-overlay-icon { width: 48px; height: 48px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; transform: scale(0.8); transition: transform 0.3s ease; }
-.gallery-item:hover .gallery-overlay-icon { transform: scale(1); }
-.gallery-item:hover { transform: scale(1.01); transition: transform 0.3s ease; }
+.portfolio-track {
+  display: flex;
+  will-change: transform;
+}
 
-/* ===== REVIEWS CAROUSEL ===== */
+/* Slide with 3:4 aspect ratio. Adjacent slides are scaled and faded */
+.portfolio-slide {
+  min-width: 280px;
+  max-width: 280px;
+  aspect-ratio: 3/4;
+  margin: 0 12px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--bg2);
+  border: 1px solid var(--glass-border);
+  opacity: 0.35;
+  transform: scale(0.9);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  pointer-events: none; /* Prevents dragging glitches */
+  user-select: none;
+}
+.portfolio-slide.active {
+  opacity: 1;
+  transform: scale(1);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+}
+.portfolio-slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Stories-style header overlays with numbered avatars */
+.story-header {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 4;
+  pointer-events: none;
+}
+.story-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1.5px solid var(--acc1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 13px;
+  color: var(--acc1);
+  font-weight: 700;
+}
+.story-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--acc1);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+@media (min-width: 768px) {
+  .portfolio-slide {
+    min-width: 420px;
+    max-width: 420px;
+    margin: 0 16px;
+  }
+}
+
+/* PC Navigation controls at the bottom of the section */
+.portfolio-nav {
+  display: none; /* Hidden on mobile */
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+@media (min-width: 768px) {
+  .portfolio-nav {
+    display: flex; /* Visible only on desktop */
+  }
+}
+.portfolio-btn {
+  width: 40px;
+  height: 40px;
+  background: rgba(10, 10, 10, 0.4);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  color: var(--acc2);
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.portfolio-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--acc1);
+}
+/* Visual state for disabled buttons (when at limits) */
+.portfolio-btn.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* ===== REVIEWS ===== */
 .reviews-bg { background: transparent; }
 .carousel-wrap { position: relative; max-width: 860px; margin: 0 auto; overflow: hidden; }
 .carousel-track { display: flex; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -465,7 +522,7 @@ section { padding: 80px 24px; position: relative; }
 .dot.active { background: var(--acc1); width: 20px; border-radius: 3px; }
 
 /* ===== FOOTER ===== */
-footer { background: transparent; border-top: 1px solid var(--glass-border); padding: 48px 24px 32px; text-align: center; }
+footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padding: 48px 24px 32px; text-align: center; }
 .footer-brand { display: flex; flex-direction: column; align-items: center; gap: 20px; margin-bottom: 32px; }
 .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 3px; }
 .footer-logo span { color: var(--acc1); opacity: 0.5; }
@@ -480,12 +537,10 @@ footer { background: transparent; border-top: 1px solid var(--glass-border); pad
 
 /* RESPONSIVE */
 @media (min-width: 768px) {
-  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
   section { padding: 100px 40px; }
   .carousel-wrap { max-width: 720px; }
 }
 @media (min-width: 1024px) {
-  .gallery-grid { grid-template-columns: repeat(4, 1fr); }
   section { padding: 120px 60px; }
 }
 @media (min-width: 1440px) {
@@ -516,7 +571,7 @@ footer { background: transparent; border-top: 1px solid var(--glass-border); pad
   <div class="glow-orb orb3"></div>
   <div class="grid-lines"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">ПРЕМИАЛЬНОЕ МУЖСКОЕ ПРОСТРАНСТВО</div>
+    <div class="hero-eyebrow">ПРЕМИАЛЬНЫЙ МУЖСКОЙ БАРБЕРШОП</div>
     <h1 class="hero-title">BARBER<br><span>RUSO</span></h1>
     <p class="hero-sub">Безупречная эстетика мужского стиля в Сатке</p>
     
@@ -645,22 +700,96 @@ footer { background: transparent; border-top: 1px solid var(--glass-border); pad
 
 <div class="divider"></div>
 
-<!-- GALLERY -->
-<section class="gallery-bg" id="gallery">
+<!-- PORTFOLIO (Strict 1-to-8 Linear Carousel) -->
+<section class="portfolio-bg" id="gallery">
   <div class="section-header reveal">
     <div class="section-label">Философия формы</div>
     <h2 class="section-title">Портфолио</h2>
     <p class="section-sub">Визуальный манифест нашей работы. Точность линий, текстура и идеальный баланс в каждом образе.</p>
   </div>
-  <div class="gallery-grid">
-    <div class="gallery-item reveal reveal-delay-1"><div class="gallery-placeholder"><div class="gallery-placeholder-icon">FADE</div></div><div class="gallery-overlay"><div class="gallery-overlay-icon">⊕</div></div></div>
-    <div class="gallery-item reveal reveal-delay-2"><div class="gallery-placeholder" style="background:linear-gradient(160deg,rgba(255,255,255,0.01) 0%,var(--bg2) 100%)"><div class="gallery-placeholder-icon">BEARD</div></div><div class="gallery-overlay"><div class="gallery-overlay-icon">⊕</div></div></div>
-    <div class="gallery-item reveal reveal-delay-3"><div class="gallery-placeholder" style="background:linear-gradient(200deg,rgba(255,255,255,0.01) 0%,var(--bg2) 100%)"><div class="gallery-placeholder-icon">SKIN</div></div><div class="gallery-overlay"><div class="gallery-overlay-icon">⊕</div></div></div>
-    <div class="gallery-item reveal reveal-delay-4"><div class="gallery-placeholder"><div class="gallery-placeholder-icon">STYLE</div></div><div class="gallery-overlay"><div class="gallery-overlay-icon">⊕</div></div></div>
-    <div class="gallery-item reveal reveal-delay-1"><div class="gallery-placeholder" style="background:linear-gradient(140deg,rgba(255,255,255,0.01) 0%,var(--bg2) 100%)"><div class="gallery-placeholder-icon">BUZZ</div></div><div class="gallery-overlay"><div class="gallery-overlay-icon">⊕</div></div></div>
-    <div class="gallery-item reveal reveal-delay-2"><div class="gallery-placeholder"><div class="gallery-placeholder-icon">TRIM</div></div><div class="gallery-overlay"><div class="gallery-overlay-icon">⊕</div></div></div>
-    <div class="gallery-item reveal reveal-delay-3"><div class="gallery-placeholder" style="background:linear-gradient(170deg,rgba(255,255,255,0.01) 0%,var(--bg2) 100%)"><div class="gallery-placeholder-icon">CREW</div></div><div class="gallery-overlay"><div class="gallery-overlay-icon">⊕</div></div></div>
-    <div class="gallery-item reveal reveal-delay-4"><div class="gallery-placeholder"><div class="gallery-placeholder-icon">CLAS</div></div><div class="gallery-overlay"><div class="gallery-overlay-icon">⊕</div></div></div>
+  
+  <div class="portfolio-viewport reveal" id="portfolioViewport">
+    <div class="portfolio-track" id="portfolioTrack">
+      
+      <!-- Slide 1: Fade -->
+      <div class="portfolio-slide">
+        <div class="story-header">
+          <div class="story-avatar">1</div>
+          <span class="story-title">Фейд</span>
+        </div>
+        <img src="img/portfolio-fade.png" alt="Fade" class="portfolio-slide-img">
+      </div>
+      
+      <!-- Slide 2: Beard -->
+      <div class="portfolio-slide">
+        <div class="story-header">
+          <div class="story-avatar">2</div>
+          <span class="story-title">Борода</span>
+        </div>
+        <img src="img/portfolio-beard.png" alt="Beard" class="portfolio-slide-img">
+      </div>
+      
+      <!-- Slide 3: Skin -->
+      <div class="portfolio-slide">
+        <div class="story-header">
+          <div class="story-avatar">3</div>
+          <span class="story-title">Скин фейд</span>
+        </div>
+        <img src="img/portfolio-skin.png" alt="Skin" class="portfolio-slide-img">
+      </div>
+      
+      <!-- Slide 4: Style -->
+      <div class="portfolio-slide">
+        <div class="story-header">
+          <div class="story-avatar">4</div>
+          <span class="story-title">Кроп</span>
+        </div>
+        <img src="img/portfolio-style.png" alt="Style" class="portfolio-slide-img">
+      </div>
+      
+      <!-- Slide 5: Buzz -->
+      <div class="portfolio-slide">
+        <div class="story-header">
+          <div class="story-avatar">5</div>
+          <span class="story-title">Милитари</span>
+        </div>
+        <img src="img/portfolio-buzz.png" alt="Buzz" class="portfolio-slide-img">
+      </div>
+      
+      <!-- Slide 6: Trim -->
+      <div class="portfolio-slide">
+        <div class="story-header">
+          <div class="story-avatar">6</div>
+          <span class="story-title">Коррекция</span>
+        </div>
+        <img src="img/portfolio-trim.png" alt="Trim" class="portfolio-slide-img">
+      </div>
+      
+      <!-- Slide 7: Crew -->
+      <div class="portfolio-slide">
+        <div class="story-header">
+          <div class="story-avatar">7</div>
+          <span class="story-title">Полубокс</span>
+        </div>
+        <img src="img/portfolio-crew.png" alt="Crew" class="portfolio-slide-img">
+      </div>
+      
+      <!-- Slide 8: Clas -->
+      <div class="portfolio-slide">
+        <div class="story-header">
+          <div class="story-avatar">8</div>
+          <span class="story-title">Классика</span>
+        </div>
+        <img src="img/portfolio-clas.png" alt="Classic" class="portfolio-slide-img">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PC Navigation Controls -->
+  <div class="portfolio-nav reveal">
+    <button class="portfolio-btn" id="pPrevBtn" aria-label="Назад">&#8592;</button>
+    <button class="portfolio-btn" id="pNextBtn" aria-label="Вперед">&#8594;</button>
   </div>
 </section>
 
@@ -701,7 +830,7 @@ footer { background: transparent; border-top: 1px solid var(--glass-border); pad
   <div class="footer-bottom">
     <p>г. Сатка, ул. Солнечная 11</p>
     <p><a href="tel:+79822826697" class="footer-phone-link">+7 982 282 6697</a></p>
-    <p>© 2026 BARBERRUSO. Все права защищены.</p>
+    <p>© 2024 BARBERRUSO. Все права защищены.</p>
   </div>
 </footer>
 
@@ -742,13 +871,13 @@ const reviews = [
   { name: 'Антон Белов', time: '3 месяца назад', stars: 5, title: 'Профессионализм в деталях', text: 'Все аккуратно, в срок, без лишних разговоров. Чувствуется серьезный опыт и насмотренность мастеров. Однозначно буду рекомендовать коллегам.', initials: 'АБ' },
 ];
 
-let current = 0;
-const track = document.getElementById('carouselTrack');
-const dotsWrap = document.getElementById('carouselDots');
+let rCurrent = 0;
+const rTrack = document.getElementById('carouselTrack');
+const rDotsWrap = document.getElementById('carouselDots');
 
 reviews.forEach((r, i) => {
   const stars = Array.from({length:5}, (_,si) => `<span class="star">${si < r.stars ? '★' : '☆'}</span>`).join('');
-  track.innerHTML += `<div class="review-card">
+  rTrack.innerHTML += `<div class="review-card">
     <div class="review-stars">${stars}</div>
     <div class="review-title">${r.title}</div>
     <p class="review-text">"${r.text}"</p>
@@ -759,29 +888,24 @@ reviews.forEach((r, i) => {
   </div>`;
   const dot = document.createElement('div');
   dot.className = 'dot' + (i === 0 ? ' active' : '');
-  dot.onclick = () => goTo(i);
-  dotsWrap.appendChild(dot);
+  dot.onclick = () => goToReview(i);
+  rDotsWrap.appendChild(dot);
 });
 
-function goTo(n) {
-  current = (n + reviews.length) % reviews.length;
-  track.style.transform = `translateX(-${current * 100}%)`;
-  document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i === current));
+function goToReview(n) {
+  rCurrent = (n + reviews.length) % reviews.length;
+  rTrack.style.transform = `translateX(-${rCurrent * 100}%)`;
+  document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i === rCurrent));
 }
-document.getElementById('prevBtn').onclick = () => goTo(current - 1);
-document.getElementById('nextBtn').onclick = () => goTo(current + 1);
+document.getElementById('prevBtn').onclick = () => goToReview(rCurrent - 1);
+document.getElementById('nextBtn').onclick = () => goToReview(rCurrent + 1);
 
-// Auto-advance
-let autoTimer = setInterval(() => goTo(current + 1), 5000);
-track.parentElement.addEventListener('mouseenter', () => clearInterval(autoTimer));
-track.parentElement.addEventListener('mouseleave', () => { autoTimer = setInterval(() => goTo(current + 1), 5000); });
-
-// Touch swipe
-let touchStartX = 0;
-track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, {passive:true});
-track.addEventListener('touchend', e => {
-  const diff = touchStartX - e.changedTouches[0].clientX;
-  if (Math.abs(diff) > 50) goTo(current + (diff > 0 ? 1 : -1));
+// Touch swipe for Reviews
+let rTouchStartX = 0;
+rTrack.parentElement.addEventListener('touchstart', e => { rTouchStartX = e.touches[0].clientX; }, {passive:true});
+rTrack.parentElement.addEventListener('touchend', e => {
+  const diff = rTouchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 50) goToReview(rCurrent + (diff > 0 ? 1 : -1));
 });
 
 // MODAL & TELEGRAM REDIRECT
@@ -866,6 +990,102 @@ window.addEventListener('DOMContentLoaded', lockBgHeight);
 window.addEventListener('load', lockBgHeight);
 window.addEventListener('orientationchange', () => {
   setTimeout(lockBgHeight, 200);
+});
+
+// --- STRICT 1-to-8 LINEAR PORTFOLIO CAROUSEL ENGINE ---
+const pTrack = document.getElementById('portfolioTrack');
+const pSlides = document.querySelectorAll('.portfolio-slide');
+const pViewport = document.getElementById('portfolioViewport');
+const pPrevBtn = document.getElementById('pPrevBtn');
+const pNextBtn = document.getElementById('pNextBtn');
+
+let pIndex = 0; // Starts strictly at 0 (First image)
+let pStartX = 0;
+let pCurrentTranslate = 0;
+let pPrevTranslate = 0;
+let pIsDragging = false;
+let pMargin = window.innerWidth < 768 ? 12 : 16;
+let pSlideWidth = pSlides[0].offsetWidth + pMargin * 2;
+
+function getPosX(e) {
+  return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+}
+
+function updatePortfolioLayout() {
+  const viewportWidth = pViewport.clientWidth;
+  pMargin = window.innerWidth < 768 ? 12 : 16;
+  pSlideWidth = pSlides[0].offsetWidth + pMargin * 2;
+  
+  pCurrentTranslate = (viewportWidth / 2) - (pIndex * pSlideWidth + pSlideWidth / 2);
+  pPrevTranslate = pCurrentTranslate;
+  
+  pTrack.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+  pTrack.style.transform = `translateX(${pCurrentTranslate}px)`;
+  
+  pSlides.forEach((slide, idx) => {
+    slide.classList.toggle('active', idx === pIndex);
+  });
+  
+  // Disable arrow buttons visually if we reach the bounds (0 or 7)
+  if(pPrevBtn) pPrevBtn.classList.toggle('disabled', pIndex === 0);
+  if(pNextBtn) pNextBtn.classList.toggle('disabled', pIndex === pSlides.length - 1);
+}
+
+// Strictly bounded PC Button Click Handlers
+function movePortfolio(direction) {
+  pIndex += direction;
+  // Hard clamp boundaries (0 to 7)
+  if (pIndex < 0) pIndex = 0;
+  if (pIndex > pSlides.length - 1) pIndex = pSlides.length - 1;
+  updatePortfolioLayout();
+}
+
+if(pPrevBtn) pPrevBtn.onclick = () => movePortfolio(-1);
+if(pNextBtn) pNextBtn.onclick = () => movePortfolio(1);
+
+// Mobile Touch Swipe Handlers ONLY (Mouse removed)
+function pOnTouchStart(e) {
+  pIsDragging = true;
+  pStartX = e.touches[0].clientX;
+  pTrack.style.transition = 'none';
+}
+
+function pOnTouchMove(e) {
+  if (!pIsDragging) return;
+  const currentX = e.touches[0].clientX;
+  const diff = currentX - pStartX;
+  const tempTranslate = pPrevTranslate + diff;
+  pTrack.style.transform = `translateX(${tempTranslate}px)`;
+}
+
+function pOnTouchEnd(e) {
+  if (!pIsDragging) return;
+  pIsDragging = false;
+  
+  const endX = e.changedTouches[0].clientX;
+  const diff = endX - pStartX;
+  
+  // Swipe Logic with boundaries
+  if (diff < -50 && pIndex < pSlides.length - 1) {
+    pIndex += 1;
+  } else if (diff > 50 && pIndex > 0) {
+    pIndex -= 1;
+  }
+  
+  updatePortfolioLayout();
+}
+
+pViewport.addEventListener('touchstart', pOnTouchStart, { passive: true });
+pViewport.addEventListener('touchmove', pOnTouchMove, { passive: true });
+pViewport.addEventListener('touchend', pOnTouchEnd);
+
+// Recalculate layout on load & window resizing
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(updatePortfolioLayout, 150);
+});
+window.addEventListener('resize', updatePortfolioLayout);
+window.addEventListener('orientationchange', () => {
+  setTimeout(updatePortfolioLayout, 200);
 });
 </script>
 </body>
