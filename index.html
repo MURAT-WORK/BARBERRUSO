@@ -3,8 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="description" content="BARBERRUSO — премиальные мужские стрижки в Сатке. Современный подход, стиль и атмосфера.">
-<title>BARBERRUSO — Премиальный барбершоп в Сатке</title>
+
+<!-- SEO ОПТИМИЗАЦИЯ -->
+<title>BARBERRUSO — Премиальный мужской барбершоп в Сатке</title>
+<meta name="description" content="BARBERRUSO — Премиальное мужское пространство в Сатке. Профессиональные мужские стрижки, фейд (fade), моделирование бороды и бритье. Безупречный сервис и эстетика.">
+<meta name="keywords" content="барбершоп сатка, мужские стрижки сатка, стрижка бороды сатка, барбер руслан сатка, barberruso, фейд сатка, кроп, мужская парикмахерская">
+<meta name="author" content="BARBERRUSO">
+<link rel="canonical" href="https://barberruso.ru/">
+
+<!-- OPEN GRAPH (Для красивых ссылок в Telegram, VK, WhatsApp) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="BARBERRUSO — Премиальный барбершоп в Сатке">
+<meta property="og:description" content="Мужские стрижки, архитектура бороды и безупречный стиль. Забронируйте время онлайн.">
+<meta property="og:url" content="https://barberruso.ru/">
+<meta property="og:image" content="img/background.jpg">
+<meta property="og:site_name" content="BARBERRUSO">
+
+<!-- ИКОНКА САЙТА С ОБВОДКОЙ -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%231C1C1C'/%3E%3Cg transform='scale(0.85, 1.15) translate(8, -8)'%3E%3Ctext x='44' y='66' font-family='Arial, sans-serif' font-weight='900' font-size='56' fill='%23FFFFFF' text-anchor='middle'%3EB%3C/text%3E%3Ctext x='60' y='72' font-family='Arial, sans-serif' font-weight='900' font-size='56' fill='%23000000' stroke='%23000000' stroke-width='6' text-anchor='middle'%3ER%3C/text%3E%3Ctext x='60' y='72' font-family='Arial, sans-serif' font-weight='900' font-size='56' fill='%23A6A6A6' text-anchor='middle'%3ER%3C/text%3E%3C/g%3E%3C/svg%3E">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat+Alternates:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -15,7 +32,6 @@
   --acc1: #FFFFFF;
   --acc2: #A6A6A6;
   --accent: #FFFFFF;
-  /* Полупрозрачное темное стекло, пропускающее свет и цвет */
   --glass-bg: rgba(10, 10, 10, 0.65);
   --glass-border: rgba(255, 255, 255, 0.08);
 }
@@ -46,13 +62,13 @@ body::before {
   opacity: 0.25;
 }
 
-/* Global Fixed Background Layer */
+/* Global Fixed Background Layer (Lighter gradients for Caesar visibility) */
 .global-bg {
   position: fixed;
   top: -40px; 
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100vh; /* Базовый фолбек */
   z-index: -2;
   background-image: 
     linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%),
@@ -60,12 +76,12 @@ body::before {
     url('img/background.jpg');
   background-size: cover;
   background-position: center top;
-  filter: blur(8px);
-  transform: scale(1.06);
+  filter: blur(8px); /* Наш размытый фон */
+  transform: scale(1.06); /* Компенсация размытия по краям */
   pointer-events: none;
 }
 
-/* NAV */
+/* NAV - Always fixed rounded pill at a lower position */
 .nav {
   position: fixed;
   top: 24px;
@@ -148,7 +164,14 @@ body::before {
 }
 .hero-title span { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.25); }
 .hero-sub { font-size: clamp(13px, 3vw, 16px); font-weight: 400; color: var(--acc1); opacity: 0.8; letter-spacing: 1px; margin-bottom: 16px; opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.6s; }
-.hero-desc-spacer { height: 56px; opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.8s; }
+
+/* Empty space ("air") instead of description text */
+.hero-desc-spacer {
+  height: 56px;
+  opacity: 0;
+  animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.8s;
+}
+
 .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 48px; opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 1s; }
 
 .btn-primary {
@@ -342,17 +365,17 @@ section { padding: 80px 24px; position: relative; }
   left: 0;
   opacity: 0;
   pointer-events: none;
-  transform: translateX(100%); /* Positioned off-screen right by default */
+  transform: translateX(100%);
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .prices-grid.active {
-  position: relative; /* Drives container height dynamically when active */
+  position: relative;
   opacity: 1;
   pointer-events: all;
   transform: translateX(0);
 }
 .prices-grid.slide-left {
-  transform: translateX(-100%); /* Slides out left on switch */
+  transform: translateX(-100%);
   opacity: 0;
   pointer-events: none;
 }
@@ -412,7 +435,6 @@ section { padding: 80px 24px; position: relative; }
   white-space: nowrap;
 }
 
-/* Only show booking button on PC hover states, keeping mobile layout clean */
 @media (hover: hover) {
   .price-card:hover .price-book-btn, .price-card.active .price-book-btn { 
     display: block; 
@@ -420,6 +442,7 @@ section { padding: 80px 24px; position: relative; }
   }
 }
 .price-book-btn:hover { background: #E5E5E5; box-shadow: 0 6px 20px rgba(255,255,255,0.15); }
+
 
 /* ===== PORTFOLIO CAROUSEL (Strict Linear) ===== */
 .portfolio-bg { background: transparent; overflow-x: hidden; width: 100%; position: relative; }
@@ -544,6 +567,25 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
 .modal-success .check { width: 60px; height: 60px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--acc1); }
 .modal-success p { font-size: 14px; color: var(--acc2); line-height: 1.6; }
 </style>
+
+<!-- JSON-LD ДЛЯ ЛОКАЛЬНОГО БИЗНЕСА (ЯНДЕКС И GOOGLE) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HairSalon",
+  "name": "BARBERRUSO",
+  "image": "https://barberruso.ru/img/background.jpg",
+  "description": "Премиальный мужской барбершоп в Сатке. Мужские стрижки, оформление бороды, фейд.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ул. Солнечная 11",
+    "addressLocality": "Сатка",
+    "addressCountry": "RU"
+  },
+  "telephone": "+79822826697",
+  "priceRange": "$$"
+}
+</script>
 </head>
 <body>
 
@@ -566,7 +608,6 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
     <h1 class="hero-title">BARBER<br><span>RUSO</span></h1>
     <p class="hero-sub">Безупречная эстетика мужского стиля в Сатке</p>
     
-    <!-- Vertical spacer ("air") in place of the removed description -->
     <div class="hero-desc-spacer"></div>
 
     <div class="hero-btns">
@@ -761,7 +802,7 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
 
 <div class="divider"></div>
 
-<!-- PORTFOLIO (Sleek Instagram Stories Style) -->
+<!-- PORTFOLIO (Strict Linear 1-8 Carousel) -->
 <section class="portfolio-bg" id="gallery">
   <div class="section-header reveal">
     <div class="section-label">Философия формы</div>
@@ -771,67 +812,79 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
   
   <div class="portfolio-viewport reveal" id="portfolioViewport">
     <div class="portfolio-track" id="portfolioTrack">
-      <!-- Clones & Original Slides for seamless infinite looping -->
-      <div class="portfolio-slide p-clone-first"><img src="img/portfolio-clas.png" alt="Classic" class="portfolio-slide-img"></div> <!-- Clone of Last -->
       
+      <!-- Slide 1: Fade -->
       <div class="portfolio-slide">
         <div class="story-header">
           <div class="story-avatar">1</div>
           <span class="story-title">Фейд</span>
         </div>
-        <img src="img/portfolio-fade.png" alt="Fade" class="portfolio-slide-img">
+        <img src="img/portfolio-fade.png" alt="Стрижка Фейд Сатка" class="portfolio-slide-img">
       </div>
+      
+      <!-- Slide 2: Beard -->
       <div class="portfolio-slide">
         <div class="story-header">
           <div class="story-avatar">2</div>
           <span class="story-title">Борода</span>
         </div>
-        <img src="img/portfolio-beard.png" alt="Beard" class="portfolio-slide-img">
+        <img src="img/portfolio-beard.png" alt="Оформление бороды Сатка" class="portfolio-slide-img">
       </div>
+      
+      <!-- Slide 3: Skin -->
       <div class="portfolio-slide">
         <div class="story-header">
           <div class="story-avatar">3</div>
           <span class="story-title">Скин фейд</span>
         </div>
-        <img src="img/portfolio-skin.png" alt="Skin" class="portfolio-slide-img">
+        <img src="img/portfolio-skin.png" alt="Стрижка Скин Фейд Сатка" class="portfolio-slide-img">
       </div>
+      
+      <!-- Slide 4: Style -->
       <div class="portfolio-slide">
         <div class="story-header">
           <div class="story-avatar">4</div>
           <span class="story-title">Кроп</span>
         </div>
-        <img src="img/portfolio-style.png" alt="Style" class="portfolio-slide-img">
+        <img src="img/portfolio-style.png" alt="Стрижка Кроп Сатка" class="portfolio-slide-img">
       </div>
+      
+      <!-- Slide 5: Buzz -->
       <div class="portfolio-slide">
         <div class="story-header">
           <div class="story-avatar">5</div>
           <span class="story-title">Милитари</span>
         </div>
-        <img src="img/portfolio-buzz.png" alt="Buzz" class="portfolio-slide-img">
+        <img src="img/portfolio-buzz.png" alt="Стрижка Милитари" class="portfolio-slide-img">
       </div>
+      
+      <!-- Slide 6: Trim -->
       <div class="portfolio-slide">
         <div class="story-header">
           <div class="story-avatar">6</div>
           <span class="story-title">Коррекция</span>
         </div>
-        <img src="img/portfolio-trim.png" alt="Trim" class="portfolio-slide-img">
+        <img src="img/portfolio-trim.png" alt="Коррекция бороды Сатка" class="portfolio-slide-img">
       </div>
+      
+      <!-- Slide 7: Crew -->
       <div class="portfolio-slide">
         <div class="story-header">
           <div class="story-avatar">7</div>
           <span class="story-title">Полубокс</span>
         </div>
-        <img src="img/portfolio-crew.png" alt="Crew" class="portfolio-slide-img">
+        <img src="img/portfolio-crew.png" alt="Стрижка Полубокс Сатка" class="portfolio-slide-img">
       </div>
+      
+      <!-- Slide 8: Clas -->
       <div class="portfolio-slide">
         <div class="story-header">
           <div class="story-avatar">8</div>
           <span class="story-title">Классика</span>
         </div>
-        <img src="img/portfolio-clas.png" alt="Classic" class="portfolio-slide-img">
+        <img src="img/portfolio-clas.png" alt="Классическая мужская стрижка Сатка" class="portfolio-slide-img">
       </div>
-      
-      <div class="portfolio-slide"><img src="img/portfolio-fade.png" alt="Fade" class="portfolio-slide-img"></div> <!-- Clone of First -->
+
     </div>
   </div>
 
@@ -879,7 +932,7 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
   <div class="footer-bottom">
     <p>г. Сатка, ул. Солнечная 11</p>
     <p><a href="tel:+79822826697" class="footer-phone-link">+7 982 282 6697</a></p>
-    <p>© 2024 BARBERRUSO. Все права защищены.</p>
+    <p>© 2026 BARBERRUSO. Все права защищены.</p>
   </div>
 </footer>
 
@@ -962,6 +1015,7 @@ function openModal(name, price) {
   selectedService = name;
   document.getElementById('modalServiceName').textContent = name + ' — ' + price;
   document.getElementById('modalForm').style.display = 'block';
+  
   document.getElementById('bookFirstName').value = '';
   document.getElementById('bookLastName').value = '';
   document.getElementById('bookPhone').value = '';
@@ -1025,30 +1079,25 @@ window.addEventListener('DOMContentLoaded', lockBgHeight);
 window.addEventListener('load', lockBgHeight);
 window.addEventListener('orientationchange', () => { setTimeout(lockBgHeight, 200); });
 
-// --- PORTFOLIO SNAPPING CAROUSEL ENGINE ---
+// --- STRICT LINEAR PORTFOLIO CAROUSEL ENGINE (0 to 7) ---
 const pTrack = document.getElementById('portfolioTrack');
 const pSlides = document.querySelectorAll('.portfolio-slide');
 const pViewport = document.getElementById('portfolioViewport');
 const pPrevBtn = document.getElementById('pPrevBtn');
 const pNextBtn = document.getElementById('pNextBtn');
 
-let pIndex = 1; // Start at 1 (first real slide, bypasses prefix clone)
+let pIndex = 0; // Starts exactly on Slide 1 (Index 0)
 let pStartX = 0;
 let pCurrentTranslate = 0;
 let pPrevTranslate = 0;
 let pIsDragging = false;
-let pMargin = window.innerWidth < 768 ? 12 : 16;
-let pSlideWidth = pSlides[0].offsetWidth + pMargin * 2;
-
-function getPosX(e) {
-  return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-}
 
 function updatePortfolioLayout() {
   const viewportWidth = pViewport.clientWidth;
-  pMargin = window.innerWidth < 768 ? 12 : 16;
-  pSlideWidth = pSlides[0].offsetWidth + pMargin * 2;
+  const pMargin = window.innerWidth < 768 ? 12 : 16;
+  const pSlideWidth = pSlides[0].offsetWidth + pMargin * 2;
   
+  // Calculate exact translation to center current slide
   pCurrentTranslate = (viewportWidth / 2) - (pIndex * pSlideWidth + pSlideWidth / 2);
   pPrevTranslate = pCurrentTranslate;
   
@@ -1059,74 +1108,54 @@ function updatePortfolioLayout() {
     slide.classList.toggle('active', idx === pIndex);
   });
   
-  // Disable arrow buttons visually if we reach the bounds (0 or 7)
+  // Disable arrow buttons visually if we reach the bounds
   if(pPrevBtn) pPrevBtn.classList.toggle('disabled', pIndex === 0);
   if(pNextBtn) pNextBtn.classList.toggle('disabled', pIndex === pSlides.length - 1);
 }
 
-// Infinite Looping Transition Reset
-function checkIndexLoop() {
-  pTrack.style.transition = 'none';
-  if (pIndex === pSlides.length - 1) {
-    pIndex = 1;
-  } else if (pIndex === 0) {
-    pIndex = pSlides.length - 2;
-  }
+// PC Button Click Handlers
+function movePortfolio(direction) {
+  pIndex += direction;
+  // Strict boundaries
+  if (pIndex < 0) pIndex = 0;
+  if (pIndex > pSlides.length - 1) pIndex = pSlides.length - 1;
   updatePortfolioLayout();
 }
 
-// Touch & Mouse Drag Handlers
-function onDragStart(e) {
+if(pPrevBtn) pPrevBtn.onclick = () => movePortfolio(-1);
+if(pNextBtn) pNextBtn.onclick = () => movePortfolio(1);
+
+// Touch Swipe Handlers ONLY (No mouse dragging)
+function pOnTouchStart(e) {
   pIsDragging = true;
-  pStartX = getPosX(e);
+  pStartX = e.touches[0].clientX;
   pTrack.style.transition = 'none';
 }
 
-function onDragMove(e) {
+function pOnTouchMove(e) {
   if (!pIsDragging) return;
-  const currentX = getPosX(e);
+  const currentX = e.touches[0].clientX;
   const diff = currentX - pStartX;
   pTrack.style.transform = `translateX(${pPrevTranslate + diff}px)`;
 }
 
-function onDragEnd(e) {
+function pOnTouchEnd(e) {
   if (!pIsDragging) return;
   pIsDragging = false;
   
-  const endX = e.type.includes('mouse') ? e.pageX : e.changedTouches[0].clientX;
-  const diff = endX - pStartX;
+  const diff = e.changedTouches[0].clientX - pStartX;
   
-  // Snap exactly card-by-card on 50px threshold
   if (diff < -50 && pIndex < pSlides.length - 1) {
     pIndex += 1;
   } else if (diff > 50 && pIndex > 0) {
     pIndex -= 1;
   }
-  
   updatePortfolioLayout();
-  
-  // Seamless loop after snapping animation completes
-  setTimeout(checkIndexLoop, 500);
 }
 
-// Event Listeners for Touch and Mouse Drag
-pViewport.addEventListener('touchstart', onDragStart, { passive: true });
-pViewport.addEventListener('touchmove', onDragMove, { passive: true });
-pViewport.addEventListener('touchend', onDragEnd);
-
-pViewport.addEventListener('mousedown', onDragStart);
-pViewport.addEventListener('mousemove', onDragMove);
-pViewport.addEventListener('mouseup', onDragEnd);
-pViewport.addEventListener('mouseleave', () => { if (pIsDragging) onDragEnd({ type: 'mouseup', pageX: pStartX }); });
-
-// Recalculate layout on load & window resizing
-window.addEventListener('DOMContentLoaded', () => {
-  setTimeout(updatePortfolioLayout, 150);
-});
-window.addEventListener('resize', updatePortfolioLayout);
-window.addEventListener('orientationchange', () => {
-  setTimeout(updatePortfolioLayout, 200);
-});
+pViewport.addEventListener('touchstart', pOnTouchStart, { passive: true });
+pViewport.addEventListener('touchmove', pOnTouchMove, { passive: true });
+pViewport.addEventListener('touchend', pOnTouchEnd);
 
 // PRICE SWITCHER ENGINE
 function switchPrices(barber) {
@@ -1138,17 +1167,20 @@ function switchPrices(barber) {
   if (barber === 'ruslan') {
     btnRuslan.classList.add('active');
     btnViach.classList.remove('active');
-    
     gridRuslan.className = 'prices-grid active';
     gridViach.className = 'prices-grid';
   } else {
     btnRuslan.classList.remove('active');
     btnViach.classList.add('active');
-    
     gridRuslan.className = 'prices-grid slide-left';
     gridViach.className = 'prices-grid active';
   }
 }
+
+// Initial Layout Updates
+window.addEventListener('DOMContentLoaded', () => { setTimeout(updatePortfolioLayout, 150); });
+window.addEventListener('resize', updatePortfolioLayout);
+window.addEventListener('orientationchange', () => { setTimeout(updatePortfolioLayout, 200); });
 </script>
 </body>
 </html>
