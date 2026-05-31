@@ -3,29 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-<!-- SEO ОПТИМИЗАЦИЯ -->
-<title>BARBERRUSO — Премиальный мужской барбершоп в Сатке</title>
-<meta name="description" content="BARBERRUSO — Премиальное мужское пространство в Сатке. Профессиональные мужские стрижки, фейд (fade), моделирование бороды и бритье. Безупречный сервис и эстетика.">
-<meta name="keywords" content="барбершоп сатка, мужские стрижки сатка, стрижка бороды сатка, барбер руслан сатка, barberruso, фейд сатка, кроп, мужская парикмахерская">
-<meta name="author" content="BARBERRUSO">
-<link rel="canonical" href="https://barberruso.ru/"> <!-- Замени на свой реальный домен, если есть -->
-
-<!-- OPEN GRAPH (Для красивых ссылок в Telegram, VK, WhatsApp) -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="BARBERRUSO — Премиальный барбершоп в Сатке">
-<meta property="og:description" content="Мужские стрижки, архитектура бороды и безупречный стиль. Забронируйте время онлайн.">
-<meta property="og:url" content="https://barberruso.ru/">
-<meta property="og:image" content="img/background.jpg">
-<meta property="og:site_name" content="BARBERRUSO">
-
-<!-- ИКОНКА САЙТА С ОБВОДКОЙ -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%231C1C1C'/%3E%3Cg transform='scale(0.85, 1.15) translate(8, -8)'%3E%3Ctext x='44' y='66' font-family='Arial, sans-serif' font-weight='900' font-size='56' fill='%23FFFFFF' text-anchor='middle'%3EB%3C/text%3E%3Ctext x='60' y='72' font-family='Arial, sans-serif' font-weight='900' font-size='56' fill='%23000000' stroke='%23000000' stroke-width='6' text-anchor='middle'%3ER%3C/text%3E%3Ctext x='60' y='72' font-family='Arial, sans-serif' font-weight='900' font-size='56' fill='%23A6A6A6' text-anchor='middle'%3ER%3C/text%3E%3C/g%3E%3C/svg%3E">
-
-<!-- ШРИФТЫ -->
+<meta name="description" content="BARBERRUSO — премиальные мужские стрижки в Сатке. Современный подход, стиль и атмосфера.">
+<title>BARBERRUSO — Премиальный барбершоп в Сатке</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat+Alternates:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
 :root {
   --bg0: #000000;
@@ -34,6 +15,7 @@
   --acc1: #FFFFFF;
   --acc2: #A6A6A6;
   --accent: #FFFFFF;
+  /* Полупрозрачное темное стекло, пропускающее свет и цвет */
   --glass-bg: rgba(10, 10, 10, 0.65);
   --glass-border: rgba(255, 255, 255, 0.08);
 }
@@ -176,6 +158,7 @@ body::before {
   cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .btn-primary:hover { transform: translateY(-2px); background: transparent; color: var(--acc1); box-shadow: 0 12px 30px rgba(255,255,255,0.1); }
+
 .btn-secondary {
   padding: 14px 28px; background: transparent; color: var(--acc1);
   border: 1px solid rgba(255,255,255,0.15); border-radius: 8px;
@@ -208,6 +191,7 @@ section { padding: 80px 24px; position: relative; }
 /* ===== MASTERS ===== */
 .masters-bg { background: transparent; overflow-x: hidden; }
 .masters-list { display: flex; flex-direction: column; gap: 28px; max-width: 960px; margin: 0 auto; }
+
 .master-card-h {
   display: flex;
   background: var(--glass-bg);
@@ -219,18 +203,58 @@ section { padding: 80px 24px; position: relative; }
   min-height: 340px;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.master-card-h:hover { transform: translateY(-4px); box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.15); }
+.master-card-h:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.15);
+}
 .master-card-h.ruslan .master-h-content { order: 1; }
 .master-card-h.ruslan .master-h-photo  { order: 2; }
 .master-card-h.viach .master-h-photo   { order: 1; }
 .master-card-h.viach .master-h-content { order: 2; }
-.master-h-content { flex: 1; padding: 36px 32px; display: flex; flex-direction: column; justify-content: center; text-align: left; }
-.master-h-photo { width: 45%; flex-shrink: 0; position: relative; overflow: visible; background: transparent; }
-.master-png-img { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%) scale(1.1); transform-origin: bottom center; height: 112%; width: auto; max-width: none; z-index: 3; pointer-events: none; }
-.viach .master-png-img { height: 100%; }
-.master-photo-grid { position: absolute; inset: 0; background-image: repeating-linear-gradient(rgba(255,255,255,0.01) 0, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 36px), repeating-linear-gradient(90deg, rgba(255,255,255,0.01) 0, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 36px); z-index: 1; background-color: rgba(20,20,20,0.4); }
+
+.master-h-content {
+  flex: 1;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+.master-h-photo {
+  width: 45%;
+  flex-shrink: 0;
+  position: relative;
+  overflow: visible; 
+  background: transparent;
+}
+
+/* Static PNG styling with no hover zoom */
+.master-png-img {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scale(1.1);
+  transform-origin: bottom center;
+  height: 112%;
+  width: auto;
+  max-width: none;
+  z-index: 3;
+  pointer-events: none;
+}
+.viach .master-png-img {
+  height: 100%;
+}
+
+.master-photo-grid { 
+  position: absolute; inset: 0; 
+  background-image: repeating-linear-gradient(rgba(255,255,255,0.01) 0, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 36px), repeating-linear-gradient(90deg, rgba(255,255,255,0.01) 0, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 36px); 
+  z-index: 1;
+  background-color: rgba(20,20,20,0.4);
+}
 .master-card-h.ruslan .master-photo-grid { border-radius: 0 20px 20px 0; }
 .master-card-h.viach .master-photo-grid { border-radius: 20px 0 0 20px; }
+
 .master-h-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.6) 0%, transparent 50%); z-index: 2; pointer-events: none; }
 .master-card-h.viach .master-h-photo::after { background: linear-gradient(to left, rgba(0,0,0,0.6) 0%, transparent 50%); }
 
@@ -238,7 +262,13 @@ section { padding: 80px 24px; position: relative; }
 .master-name { font-family: 'Montserrat Alternates', sans-serif; font-size: 32px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; line-height: 1; }
 .master-desc { font-size: 13px; line-height: 1.8; color: var(--acc2); margin-bottom: 22px; }
 .master-socials { display: flex; gap: 8px; }
-.social-btn { width: 38px; height: 38px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--acc2); text-decoration: none; transition: all 0.3s ease; }
+.social-btn {
+  width: 38px; height: 38px;
+  background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--acc2); text-decoration: none;
+  transition: all 0.3s ease;
+}
 .social-btn:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.2); color: var(--acc1); }
 .social-btn svg { width: 17px; height: 17px; fill: currentColor; }
 
@@ -259,7 +289,74 @@ section { padding: 80px 24px; position: relative; }
 
 /* ===== PRICES ===== */
 .prices-bg { background: transparent; }
-.prices-grid { display: grid; grid-template-columns: 1fr; gap: 10px; max-width: 700px; margin: 0 auto; }
+
+/* Dynamic Sliding Prices Container */
+.prices-container {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+  overflow: hidden; /* Crops out horizontal slides */
+  width: 100%;
+  min-height: 480px; /* Prevents height jumps when switching */
+}
+
+/* Tab Switcher styling */
+.price-switcher {
+  display: inline-flex;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  padding: 4px;
+  border-radius: 100px;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 10;
+}
+.switcher-btn {
+  background: transparent;
+  border: none;
+  color: var(--acc2);
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.switcher-btn.active {
+  background: var(--acc1);
+  color: var(--bg0);
+}
+
+.prices-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(100%); /* Positioned off-screen right by default */
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.prices-grid.active {
+  position: relative; /* Drives container height dynamically when active */
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(0);
+}
+.prices-grid.slide-left {
+  transform: translateX(-100%); /* Slides out left on switch */
+  opacity: 0;
+  pointer-events: none;
+}
+
 .price-card {
   display: flex; align-items: center; justify-content: space-between;
   padding: 18px 22px;
@@ -275,17 +372,52 @@ section { padding: 80px 24px; position: relative; }
 .price-card:hover::before, .price-card.popular::before { background: var(--acc1); }
 .price-card:hover { border-color: rgba(255,255,255,0.15); transform: translateX(4px); }
 .price-card.popular { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.12); }
-.price-name-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.popular-badge { display: inline-flex; align-items: center; padding: 2px 8px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 100px; font-size: 9px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--acc1); white-space: nowrap; }
+
+.price-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap; 
+}
+.popular-badge { 
+  display: inline-flex; 
+  align-items: center; 
+  padding: 2px 8px; 
+  background: rgba(255, 255, 255, 0.08); 
+  border: 1px solid rgba(255, 255, 255, 0.15); 
+  border-radius: 100px; 
+  font-size: 9px; 
+  font-weight: 600; 
+  letter-spacing: 1px; 
+  text-transform: uppercase; 
+  color: var(--acc1); 
+  white-space: nowrap;
+}
+
 .price-info { display: flex; flex-direction: column; gap: 3px; }
 .price-name { font-size: 15px; font-weight: 500; color: var(--acc1); }
 .price-duration { font-size: 11px; color: var(--acc2); opacity: 0.6; }
 .price-right { display: flex; align-items: center; gap: 12px; }
 .price-amount { font-family: 'Montserrat Alternates', sans-serif; font-size: 16px; font-weight: 700; color: var(--acc1); }
-.price-book-btn { display: none; padding: 7px 16px; background: var(--acc1); color: var(--bg0); border: none; border-radius: 7px; font-family: 'Montserrat Alternates', sans-serif; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); white-space: nowrap; }
 
+.price-book-btn {
+  display: none;
+  padding: 7px 16px;
+  background: var(--acc1);
+  color: var(--bg0);
+  border: none; border-radius: 7px;
+  font-family: 'Montserrat Alternates', sans-serif; font-size: 12px; font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+/* Only show booking button on PC hover states, keeping mobile layout clean */
 @media (hover: hover) {
-  .price-card:hover .price-book-btn, .price-card.active .price-book-btn { display: block; animation: fadeUp 0.25s ease; }
+  .price-card:hover .price-book-btn, .price-card.active .price-book-btn { 
+    display: block; 
+    animation: fadeUp 0.25s ease; 
+  }
 }
 .price-book-btn:hover { background: #E5E5E5; box-shadow: 0 6px 20px rgba(255,255,255,0.15); }
 
@@ -412,25 +544,6 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
 .modal-success .check { width: 60px; height: 60px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--acc1); }
 .modal-success p { font-size: 14px; color: var(--acc2); line-height: 1.6; }
 </style>
-
-<!-- JSON-LD ДЛЯ ЛОКАЛЬНОГО БИЗНЕСА (ЯНДЕКС И GOOGLE) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "HairSalon",
-  "name": "BARBERRUSO",
-  "image": "https://barberruso.ru/img/background.jpg",
-  "description": "Премиальный мужской барбершоп в Сатке. Мужские стрижки, оформление бороды, фейд.",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "ул. Солнечная 11",
-    "addressLocality": "Сатка",
-    "addressCountry": "RU"
-  },
-  "telephone": "+79822826697",
-  "priceRange": "$$"
-}
-</script>
 </head>
 <body>
 
@@ -453,6 +566,7 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
     <h1 class="hero-title">BARBER<br><span>RUSO</span></h1>
     <p class="hero-sub">Безупречная эстетика мужского стиля в Сатке</p>
     
+    <!-- Vertical spacer ("air") in place of the removed description -->
     <div class="hero-desc-spacer"></div>
 
     <div class="hero-btns">
@@ -476,9 +590,9 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
     <!-- Руслан -->
     <div class="master-card-h ruslan reveal reveal-delay-1">
       <div class="master-h-content">
-        <div class="master-role">Основатель · Арт-директор</div>
+        <div class="master-role">Барбер-мастер · Основатель</div>
         <div class="master-name">Руслан</div>
-        <p class="master-desc">Идеолог и основатель пространства. Архитектор форм, специализирующийся на сложных техниках фейда и архитектуре бороды. Создает не просто стрижку, а завершенный, уверенный образ.</p>
+        <p class="master-desc">Идеолог проекта и ведущий барбер-мастер Сатки. Авторский подход к форме, безупречное владение ножницами и триммером. Создает монументальные, законченные мужские образы.</p>
         <div class="master-socials">
           <a class="social-btn" href="https://t.me/BarberRuso" target="_blank" title="Telegram">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 1 0 24 12 12 12 0 0 0 11.944 0zm6.063 8.234-2.01 9.47c-.148.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.873.75z"/></svg>
@@ -490,7 +604,7 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
       </div>
       <div class="master-h-photo">
         <div class="master-photo-grid"></div>
-        <img src="img/master-ruslan.png" class="master-png-img" alt="Барбер Руслан - основатель BarberRuso Сатка">
+        <img src="img/master-ruslan.png" class="master-png-img" alt="Руслан">
       </div>
     </div>
 
@@ -498,12 +612,12 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
     <div class="master-card-h viach reveal reveal-delay-2">
       <div class="master-h-photo">
         <div class="master-photo-grid"></div>
-        <img src="img/master-viach.png" class="master-png-img" alt="Барбер Вячеслав - стилист BarberRuso Сатка">
+        <img src="img/master-viach.png" class="master-png-img" alt="Вячеслав">
       </div>
       <div class="master-h-content">
-        <div class="master-role">Барбер · Стилист</div>
+        <div class="master-role">Младший барбер</div>
         <div class="master-name">Вячеслав</div>
-        <p class="master-desc">Мастер точных геометрических линий и чистых переходов. Перфекционист в деталях, доводящий каждую работу до абсолюта. Строгость, динамика и выверенная техника.</p>
+        <p class="master-desc">Младший резидент салона. Перспективный и аккуратный мастер, проходящий личное наставничество у Руслана. Работает со строгим контролем качества, доводя каждую деталь до совершенства.</p>
       </div>
     </div>
 
@@ -519,66 +633,135 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
     <h2 class="section-title">Услуги</h2>
     <p class="section-sub">Лаконичный прайс без лишних деталей. Выбирайте необходимое и бронируйте время своего визита.</p>
   </div>
-  <div class="prices-grid">
-    <div class="price-card popular reveal reveal-delay-1" onclick="openModal('Стрижка + борода','2000 ₽')">
-      <div class="price-info">
-        <div class="price-name-row">
-          <span class="price-name">Стрижка + борода</span>
-          <span class="popular-badge">Топ</span>
+  
+  <!-- INTERACTIVE PRICE SWITCHER -->
+  <div class="price-switcher reveal">
+    <button class="switcher-btn active" onclick="switchPrices('ruslan')">Руслан</button>
+    <button class="switcher-btn" onclick="switchPrices('viach')">Вячеслав</button>
+  </div>
+
+  <div class="prices-container reveal">
+    
+    <!-- RUSLAN'S PRICE LIST (Default) -->
+    <div class="prices-grid active" id="pricesRuslan">
+      <div class="price-card popular" onclick="openModal('Стрижка + борода (Руслан)','2000 ₽')">
+        <div class="price-info">
+          <div class="price-name-row">
+            <span class="price-name">Стрижка + борода</span>
+            <span class="popular-badge">Топ</span>
+          </div>
+          <div class="price-duration">≈ 60–75 минут</div>
         </div>
-        <div class="price-duration">≈ 60–75 минут</div>
+        <div class="price-right">
+          <div class="price-amount">2000 ₽</div>
+          <button class="price-book-btn" onclick="event.stopPropagation(); openModal('Стрижка + борода (Руслан)','2000 ₽')">Записаться</button>
+        </div>
       </div>
-      <div class="price-right">
-        <div class="price-amount">2000 ₽</div>
-        <button class="price-book-btn" onclick="event.stopPropagation(); openModal('Стрижка + борода','2000 ₽')">Записаться</button>
+      <div class="price-card" onclick="openModal('Мужская стрижка (Руслан)','1300 ₽')">
+        <div class="price-info">
+          <div class="price-name">Мужская стрижка</div>
+          <div class="price-duration">≈ 45 минут</div>
+        </div>
+        <div class="price-right">
+          <div class="price-amount">1300 ₽</div>
+          <button class="price-book-btn" onclick="event.stopPropagation(); openModal('Мужская стрижка (Руслан)','1300 ₽')">Записаться</button>
+        </div>
+      </div>
+      <div class="price-card" onclick="openModal('Оформление бороды (Руслан)','1000 ₽')">
+        <div class="price-info">
+          <div class="price-name">Оформление бороды</div>
+          <div class="price-duration">≈ 30 минут</div>
+        </div>
+        <div class="price-right">
+          <div class="price-amount">1000 ₽</div>
+          <button class="price-book-btn" onclick="event.stopPropagation(); openModal('Оформление бороды (Руслан)','1000 ₽')">Записаться</button>
+        </div>
+      </div>
+      <div class="price-card" onclick="openModal('Стрижка машинкой (Руслан)','1000 ₽')">
+        <div class="price-info">
+          <div class="price-name">Стрижка машинкой</div>
+          <div class="price-duration">≈ 40 минут</div>
+        </div>
+        <div class="price-right">
+          <div class="price-amount">1000 ₽</div>
+          <button class="price-book-btn" onclick="event.stopPropagation(); openModal('Стрижка машинкой (Руслан)','1000 ₽')">Записаться</button>
+        </div>
+      </div>
+      <div class="price-card" onclick="openModal('Детская стрижка (Руслан)','1000 ₽')">
+        <div class="price-info">
+          <div class="price-name">Детская стрижка</div>
+          <div class="price-duration">≈ 30 минут</div>
+        </div>
+        <div class="price-right">
+          <div class="price-amount">1000 ₽</div>
+          <button class="price-book-btn" onclick="event.stopPropagation(); openModal('Детская стрижка (Руслан)','1000 ₽')">Записаться</button>
+        </div>
       </div>
     </div>
-    <div class="price-card reveal reveal-delay-2" onclick="openModal('Мужская стрижка','1300 ₽')">
-      <div class="price-info">
-        <div class="price-name">Мужская стрижка</div>
-        <div class="price-duration">≈ 45 минут</div>
+
+    <!-- VYACHESLAV'S PRICE LIST (Exactly 200 rubles cheaper) -->
+    <div class="prices-grid" id="pricesViach">
+      <div class="price-card popular" onclick="openModal('Стрижка + борода (Вячеслав)','1800 ₽')">
+        <div class="price-info">
+          <div class="price-name-row">
+            <span class="price-name">Стрижка + борода</span>
+            <span class="popular-badge">Топ</span>
+          </div>
+          <div class="price-duration">≈ 60–75 минут</div>
+        </div>
+        <div class="price-right">
+          <div class="price-amount">1800 ₽</div>
+          <button class="price-book-btn" onclick="event.stopPropagation(); openModal('Стрижка + борода (Вячеслав)','1800 ₽')">Записаться</button>
+        </div>
       </div>
-      <div class="price-right">
-        <div class="price-amount">1300 ₽</div>
-        <button class="price-book-btn" onclick="event.stopPropagation(); openModal('Мужская стрижка','1300 ₽')">Записаться</button>
+      <div class="price-card" onclick="openModal('Мужская стрижка (Вячеслав)','1100 ₽')">
+        <div class="price-info">
+          <div class="price-name">Мужская стрижка</div>
+          <div class="price-duration">≈ 45 минут</div>
+        </div>
+        <div class="price-right">
+          <div class="price-amount">1100 ₽</div>
+          <button class="price-book-btn" onclick="event.stopPropagation(); openModal('Мужская стрижка (Вячеслав)','1100 ₽')">Записаться</button>
+        </div>
+      </div>
+      <div class="price-card" onclick="openModal('Оформление бороды (Вячеслав)','800 ₽')">
+        <div class="price-info">
+          <div class="price-name">Оформление бороды</div>
+          <div class="price-duration">≈ 30 минут</div>
+        </div>
+        <div class="price-right">
+          <div class="price-amount">800 ₽</div>
+          <button class="price-book-btn" onclick="event.stopPropagation(); openModal('Оформление бороды (Вячеслав)','800 ₽')">Записаться</button>
+        </div>
+      </div>
+      <div class="price-card" onclick="openModal('Стрижка машинкой (Вячеслав)','800 ₽')">
+        <div class="price-info">
+          <div class="price-name">Стрижка машинкой</div>
+          <div class="price-duration">≈ 40 минут</div>
+        </div>
+        <div class="price-right">
+          <div class="price-amount">800 ₽</div>
+          <button class="price-book-btn" onclick="event.stopPropagation(); openModal('Стрижка машинкой (Вячеслав)','800 ₽')">Записаться</button>
+        </div>
+      </div>
+      <div class="price-card" onclick="openModal('Детская стрижка (Вячеслав)','800 ₽')">
+        <div class="price-info">
+          <div class="price-name">Детская стрижка</div>
+          <div class="price-duration">≈ 30 минут</div>
+        </div>
+        <div class="price-right">
+          <div class="price-amount">800 ₽</div>
+          <button class="price-book-btn" onclick="event.stopPropagation(); openModal('Детская стрижка (Вячеслав)','800 ₽')">Записаться</button>
+        </div>
       </div>
     </div>
-    <div class="price-card reveal reveal-delay-3" onclick="openModal('Оформление бороды','1000 ₽')">
-      <div class="price-info">
-        <div class="price-name">Оформление бороды</div>
-        <div class="price-duration">≈ 30 минут</div>
-      </div>
-      <div class="price-right">
-        <div class="price-amount">1000 ₽</div>
-        <button class="price-book-btn" onclick="event.stopPropagation(); openModal('Оформление бороды','1000 ₽')">Записаться</button>
-      </div>
-    </div>
-    <div class="price-card reveal reveal-delay-4" onclick="openModal('Fade / Стрижка машинкой','1000 ₽')">
-      <div class="price-info">
-        <div class="price-name">Стрижка машинкой</div>
-        <div class="price-duration">≈ 40 минут</div>
-      </div>
-      <div class="price-right">
-        <div class="price-amount">1000 ₽</div>
-        <button class="price-book-btn" onclick="event.stopPropagation(); openModal('Fade / Стрижка машинкой','1000 ₽')">Записаться</button>
-      </div>
-    </div>
-    <div class="price-card reveal reveal-delay-5" onclick="openModal('Детская стрижка','1000 ₽')">
-      <div class="price-info">
-        <div class="price-name">Детская стрижка</div>
-        <div class="price-duration">≈ 30 минут</div>
-      </div>
-      <div class="price-right">
-        <div class="price-amount">1000 ₽</div>
-        <button class="price-book-btn" onclick="event.stopPropagation(); openModal('Детская стрижка','1000 ₽')">Записаться</button>
-      </div>
-    </div>
+
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- PORTFOLIO (Strict Linear No-Loop Carousel) -->
+<!-- PORTFOLIO (Sleek Instagram Stories Style) -->
 <section class="portfolio-bg" id="gallery">
   <div class="section-header reveal">
     <div class="section-label">Философия формы</div>
@@ -588,79 +771,67 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
   
   <div class="portfolio-viewport reveal" id="portfolioViewport">
     <div class="portfolio-track" id="portfolioTrack">
+      <!-- Clones & Original Slides for seamless infinite looping -->
+      <div class="portfolio-slide p-clone-first"><img src="img/portfolio-clas.png" alt="Classic" class="portfolio-slide-img"></div> <!-- Clone of Last -->
       
-      <!-- Slide 1: Fade -->
       <div class="portfolio-slide">
         <div class="story-header">
           <div class="story-avatar">1</div>
           <span class="story-title">Фейд</span>
         </div>
-        <img src="img/portfolio-fade.png" alt="Стрижка Фейд (Fade) Сатка" class="portfolio-slide-img">
+        <img src="img/portfolio-fade.png" alt="Fade" class="portfolio-slide-img">
       </div>
-      
-      <!-- Slide 2: Beard -->
       <div class="portfolio-slide">
         <div class="story-header">
           <div class="story-avatar">2</div>
           <span class="story-title">Борода</span>
         </div>
-        <img src="img/portfolio-beard.png" alt="Оформление бороды Сатка" class="portfolio-slide-img">
+        <img src="img/portfolio-beard.png" alt="Beard" class="portfolio-slide-img">
       </div>
-      
-      <!-- Slide 3: Skin -->
       <div class="portfolio-slide">
         <div class="story-header">
           <div class="story-avatar">3</div>
           <span class="story-title">Скин фейд</span>
         </div>
-        <img src="img/portfolio-skin.png" alt="Стрижка Скин Фейд Сатка" class="portfolio-slide-img">
+        <img src="img/portfolio-skin.png" alt="Skin" class="portfolio-slide-img">
       </div>
-      
-      <!-- Slide 4: Style -->
       <div class="portfolio-slide">
         <div class="story-header">
           <div class="story-avatar">4</div>
           <span class="story-title">Кроп</span>
         </div>
-        <img src="img/portfolio-style.png" alt="Стрижка Кроп Сатка" class="portfolio-slide-img">
+        <img src="img/portfolio-style.png" alt="Style" class="portfolio-slide-img">
       </div>
-      
-      <!-- Slide 5: Buzz -->
       <div class="portfolio-slide">
         <div class="story-header">
           <div class="story-avatar">5</div>
           <span class="story-title">Милитари</span>
         </div>
-        <img src="img/portfolio-buzz.png" alt="Стрижка Милитари (Buzz Cut) Сатка" class="portfolio-slide-img">
+        <img src="img/portfolio-buzz.png" alt="Buzz" class="portfolio-slide-img">
       </div>
-      
-      <!-- Slide 6: Trim -->
       <div class="portfolio-slide">
         <div class="story-header">
           <div class="story-avatar">6</div>
           <span class="story-title">Коррекция</span>
         </div>
-        <img src="img/portfolio-trim.png" alt="Коррекция бороды Сатка" class="portfolio-slide-img">
+        <img src="img/portfolio-trim.png" alt="Trim" class="portfolio-slide-img">
       </div>
-      
-      <!-- Slide 7: Crew -->
       <div class="portfolio-slide">
         <div class="story-header">
           <div class="story-avatar">7</div>
           <span class="story-title">Полубокс</span>
         </div>
-        <img src="img/portfolio-crew.png" alt="Стрижка Полубокс Сатка" class="portfolio-slide-img">
+        <img src="img/portfolio-crew.png" alt="Crew" class="portfolio-slide-img">
       </div>
-      
-      <!-- Slide 8: Clas -->
       <div class="portfolio-slide">
         <div class="story-header">
           <div class="story-avatar">8</div>
           <span class="story-title">Классика</span>
         </div>
-        <img src="img/portfolio-clas.png" alt="Классическая мужская стрижка Сатка" class="portfolio-slide-img">
+        <img src="img/portfolio-clas.png" alt="Classic" class="portfolio-slide-img">
       </div>
-
+      
+      <div class="portfolio-slide"><img src="img/portfolio-fade.png" alt="Fade" class="portfolio-slide-img"></div> <!-- Clone of First -->
     </div>
   </div>
 
@@ -721,6 +892,7 @@ footer { background: var(--bg1); border-top: 1px solid var(--glass-border); padd
       <div class="modal-title">BARBERRUSO</div>
       <div class="modal-service">Услуга: <span id="modalServiceName"></span></div>
       <div class="modal-fields">
+        <!-- Разделенные поля для Имени и Фамилии -->
         <input class="modal-input" type="text" id="bookFirstName" placeholder="Имя" autocomplete="given-name">
         <input class="modal-input" type="text" id="bookLastName" placeholder="Фамилия" autocomplete="family-name">
         <input class="modal-input" type="tel" id="bookPhone" placeholder="Номер телефона" autocomplete="tel">
@@ -853,25 +1025,30 @@ window.addEventListener('DOMContentLoaded', lockBgHeight);
 window.addEventListener('load', lockBgHeight);
 window.addEventListener('orientationchange', () => { setTimeout(lockBgHeight, 200); });
 
-// --- STRICT LINEAR PORTFOLIO CAROUSEL ENGINE ---
+// --- PORTFOLIO SNAPPING CAROUSEL ENGINE ---
 const pTrack = document.getElementById('portfolioTrack');
 const pSlides = document.querySelectorAll('.portfolio-slide');
 const pViewport = document.getElementById('portfolioViewport');
 const pPrevBtn = document.getElementById('pPrevBtn');
 const pNextBtn = document.getElementById('pNextBtn');
 
-let pIndex = 0; // Starts strictly at 0
+let pIndex = 1; // Start at 1 (first real slide, bypasses prefix clone)
 let pStartX = 0;
 let pCurrentTranslate = 0;
 let pPrevTranslate = 0;
 let pIsDragging = false;
+let pMargin = window.innerWidth < 768 ? 12 : 16;
+let pSlideWidth = pSlides[0].offsetWidth + pMargin * 2;
+
+function getPosX(e) {
+  return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+}
 
 function updatePortfolioLayout() {
   const viewportWidth = pViewport.clientWidth;
-  const pMargin = window.innerWidth < 768 ? 12 : 16;
-  const pSlideWidth = pSlides[0].offsetWidth + pMargin * 2;
+  pMargin = window.innerWidth < 768 ? 12 : 16;
+  pSlideWidth = pSlides[0].offsetWidth + pMargin * 2;
   
-  // Calculate exact translation to center current slide
   pCurrentTranslate = (viewportWidth / 2) - (pIndex * pSlideWidth + pSlideWidth / 2);
   pPrevTranslate = pCurrentTranslate;
   
@@ -887,54 +1064,91 @@ function updatePortfolioLayout() {
   if(pNextBtn) pNextBtn.classList.toggle('disabled', pIndex === pSlides.length - 1);
 }
 
-// PC Button Click Handlers (Strictly bounded)
-function movePortfolio(direction) {
-  pIndex += direction;
-  if (pIndex < 0) pIndex = 0;
-  if (pIndex > pSlides.length - 1) pIndex = pSlides.length - 1;
+// Infinite Looping Transition Reset
+function checkIndexLoop() {
+  pTrack.style.transition = 'none';
+  if (pIndex === pSlides.length - 1) {
+    pIndex = 1;
+  } else if (pIndex === 0) {
+    pIndex = pSlides.length - 2;
+  }
   updatePortfolioLayout();
 }
 
-if(pPrevBtn) pPrevBtn.onclick = () => movePortfolio(-1);
-if(pNextBtn) pNextBtn.onclick = () => movePortfolio(1);
-
-// Mobile Touch Swipe Handlers ONLY (Mouse completely disabled)
-function pOnTouchStart(e) {
+// Touch & Mouse Drag Handlers
+function onDragStart(e) {
   pIsDragging = true;
-  pStartX = e.touches[0].clientX;
+  pStartX = getPosX(e);
   pTrack.style.transition = 'none';
 }
 
-function pOnTouchMove(e) {
+function onDragMove(e) {
   if (!pIsDragging) return;
-  const currentX = e.touches[0].clientX;
+  const currentX = getPosX(e);
   const diff = currentX - pStartX;
   pTrack.style.transform = `translateX(${pPrevTranslate + diff}px)`;
 }
 
-function pOnTouchEnd(e) {
+function onDragEnd(e) {
   if (!pIsDragging) return;
   pIsDragging = false;
   
-  const diff = e.changedTouches[0].clientX - pStartX;
+  const endX = e.type.includes('mouse') ? e.pageX : e.changedTouches[0].clientX;
+  const diff = endX - pStartX;
   
-  // Swipe Logic with strict boundaries
+  // Snap exactly card-by-card on 50px threshold
   if (diff < -50 && pIndex < pSlides.length - 1) {
     pIndex += 1;
   } else if (diff > 50 && pIndex > 0) {
     pIndex -= 1;
   }
+  
   updatePortfolioLayout();
+  
+  // Seamless loop after snapping animation completes
+  setTimeout(checkIndexLoop, 500);
 }
 
-pViewport.addEventListener('touchstart', pOnTouchStart, { passive: true });
-pViewport.addEventListener('touchmove', pOnTouchMove, { passive: true });
-pViewport.addEventListener('touchend', pOnTouchEnd);
+// Event Listeners for Touch and Mouse Drag
+pViewport.addEventListener('touchstart', onDragStart, { passive: true });
+pViewport.addEventListener('touchmove', onDragMove, { passive: true });
+pViewport.addEventListener('touchend', onDragEnd);
+
+pViewport.addEventListener('mousedown', onDragStart);
+pViewport.addEventListener('mousemove', onDragMove);
+pViewport.addEventListener('mouseup', onDragEnd);
+pViewport.addEventListener('mouseleave', () => { if (pIsDragging) onDragEnd({ type: 'mouseup', pageX: pStartX }); });
 
 // Recalculate layout on load & window resizing
-window.addEventListener('DOMContentLoaded', () => { setTimeout(updatePortfolioLayout, 150); });
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(updatePortfolioLayout, 150);
+});
 window.addEventListener('resize', updatePortfolioLayout);
-window.addEventListener('orientationchange', () => { setTimeout(updatePortfolioLayout, 200); });
+window.addEventListener('orientationchange', () => {
+  setTimeout(updatePortfolioLayout, 200);
+});
+
+// PRICE SWITCHER ENGINE
+function switchPrices(barber) {
+  const btnRuslan = document.querySelector('.price-switcher .switcher-btn:nth-child(1)');
+  const btnViach = document.querySelector('.price-switcher .switcher-btn:nth-child(2)');
+  const gridRuslan = document.getElementById('pricesRuslan');
+  const gridViach = document.getElementById('pricesViach');
+  
+  if (barber === 'ruslan') {
+    btnRuslan.classList.add('active');
+    btnViach.classList.remove('active');
+    
+    gridRuslan.className = 'prices-grid active';
+    gridViach.className = 'prices-grid';
+  } else {
+    btnRuslan.classList.remove('active');
+    btnViach.classList.add('active');
+    
+    gridRuslan.className = 'prices-grid slide-left';
+    gridViach.className = 'prices-grid active';
+  }
+}
 </script>
 </body>
 </html>
